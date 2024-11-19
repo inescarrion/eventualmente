@@ -14,6 +14,10 @@
 		639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 639B55852CEA8C470062F7CC /* EventualmenteApp.swift */; };
 		63CE8B362CE53E630089BC39 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B352CE53E630089BC39 /* FirebaseAuth */; };
 		63CE8B382CE53E630089BC39 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B372CE53E630089BC39 /* FirebaseFirestore */; };
+		63EAFD6C2CED33EF006349CB /* AveriaSansLibre-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */; };
+		63EAFD6D2CED33EF006349CB /* AveriaSansLibre-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD6A2CED33EF006349CB /* AveriaSansLibre-Light.ttf */; };
+		63EAFD6E2CED33EF006349CB /* AveriaSansLibre-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD6B2CED33EF006349CB /* AveriaSansLibre-Regular.ttf */; };
+		63EAFD712CED3D5D006349CB /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EAFD702CED3D54006349CB /* Font+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,11 @@
 		639B55842CEA8C470062F7CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		639B55852CEA8C470062F7CC /* EventualmenteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventualmenteApp.swift; sourceTree = "<group>"; };
 		639B55862CEA8C470062F7CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Bold.ttf"; sourceTree = "<group>"; };
+		63EAFD6A2CED33EF006349CB /* AveriaSansLibre-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Light.ttf"; sourceTree = "<group>"; };
+		63EAFD6B2CED33EF006349CB /* AveriaSansLibre-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Regular.ttf"; sourceTree = "<group>"; };
+		63EAFD6F2CED356C006349CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63EAFD702CED3D54006349CB /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -115,13 +124,26 @@
 		639B55872CEA8C470062F7CC /* Eventualmente */ = {
 			isa = PBXGroup;
 			children = (
+				63EAFD6F2CED356C006349CB /* Info.plist */,
 				639B55852CEA8C470062F7CC /* EventualmenteApp.swift */,
 				639B55842CEA8C470062F7CC /* ContentView.swift */,
 				639B55832CEA8C470062F7CC /* Assets.xcassets */,
+				63EAFD682CED33CA006349CB /* Fonts */,
 				639B55862CEA8C470062F7CC /* GoogleService-Info.plist */,
 				639B55822CEA8C470062F7CC /* Preview Content */,
 			);
 			path = Eventualmente;
+			sourceTree = "<group>";
+		};
+		63EAFD682CED33CA006349CB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				63EAFD702CED3D54006349CB /* Font+Extensions.swift */,
+				63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */,
+				63EAFD6A2CED33EF006349CB /* AveriaSansLibre-Light.ttf */,
+				63EAFD6B2CED33EF006349CB /* AveriaSansLibre-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +272,9 @@
 				639B55882CEA8C470062F7CC /* Preview Assets.xcassets in Resources */,
 				639B55892CEA8C470062F7CC /* Assets.xcassets in Resources */,
 				639B558A2CEA8C470062F7CC /* GoogleService-Info.plist in Resources */,
+				63EAFD6C2CED33EF006349CB /* AveriaSansLibre-Bold.ttf in Resources */,
+				63EAFD6D2CED33EF006349CB /* AveriaSansLibre-Light.ttf in Resources */,
+				63EAFD6E2CED33EF006349CB /* AveriaSansLibre-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63EAFD712CED3D5D006349CB /* Font+Extensions.swift in Sources */,
 				639B558B2CEA8C470062F7CC /* ContentView.swift in Sources */,
 				639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */,
 			);
@@ -461,6 +487,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Eventualmente/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -492,6 +519,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Eventualmente/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
