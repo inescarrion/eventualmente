@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(AppModel.self) var appModel
+    @State private var authenticationViewModel = AuthenticationViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            switch appModel.state {
+            case .loading:
+                ProgressView()
+            case .unauthenticated:
+                AuthenticationView()
+                    .environment(authenticationViewModel)
+            case .authenticated(let user):
+                List {
+                    Section("Correo electrónico") {
+                        Text(user.email!)
+                    }
+                    Button("Cerrar sesión") {
+                        authenticationViewModel.logOut()
+                    }
+                }
+            }
         }
-        .padding()
+        .animation(.easeInOut, value: appModel.state)
     }
 }
 
