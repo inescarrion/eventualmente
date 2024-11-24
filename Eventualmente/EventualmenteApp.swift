@@ -5,8 +5,10 @@
 //  Created by Inés Carrión on 8/10/24.
 //
 
-import FirebaseCore
 import SwiftUI
+import Firebase
+import FirebaseCore
+import FirebaseAuth
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -14,8 +16,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication
             .LaunchOptionsKey: Any]? = nil
     ) -> Bool {
-        FirebaseApp.configure()
-
         return true
     }
 }
@@ -24,9 +24,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct EventualmenteApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
 
+    @State private var appModel: AppModel
+
+    init() {
+        FirebaseApp.configure()
+        appModel = AppModel()
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(appModel)
         }
     }
 }
