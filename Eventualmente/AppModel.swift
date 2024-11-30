@@ -14,10 +14,19 @@ enum AppState: Equatable {
     case authenticated(user: User)
 }
 
+enum Tab: Equatable {
+    case explore
+    case favourites
+    case myEvents
+    case groups
+    case myAccount
+}
+
 @MainActor
 @Observable
 class AppModel {
     var state: AppState = .loading
+    var selectedTab: Tab = .explore
 
     init() {
         registerAuthStateHandler()
