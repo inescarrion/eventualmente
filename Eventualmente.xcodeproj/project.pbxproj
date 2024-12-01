@@ -24,6 +24,8 @@
 		63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BDB2CF390DB00CD923C /* AppModel.swift */; };
 		63CE8B362CE53E630089BC39 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B352CE53E630089BC39 /* FirebaseAuth */; };
 		63CE8B382CE53E630089BC39 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B372CE53E630089BC39 /* FirebaseFirestore */; };
+		63EA4E762CFC931400E9842A /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA4E752CFC931400E9842A /* CreateEventView.swift */; };
+		63EA4E782CFC96DF00E9842A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA4E772CFC96DF00E9842A /* Category.swift */; };
 		63EAFD6C2CED33EF006349CB /* AveriaSansLibre-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */; };
 		63EAFD6D2CED33EF006349CB /* AveriaSansLibre-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD6A2CED33EF006349CB /* AveriaSansLibre-Light.ttf */; };
 		63EAFD6E2CED33EF006349CB /* AveriaSansLibre-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63EAFD6B2CED33EF006349CB /* AveriaSansLibre-Regular.ttf */; };
@@ -66,6 +68,8 @@
 		63AB4BD52CF327EE00CD923C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extension.swift"; sourceTree = "<group>"; };
 		63AB4BDB2CF390DB00CD923C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		63EA4E752CFC931400E9842A /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
+		63EA4E772CFC96DF00E9842A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Bold.ttf"; sourceTree = "<group>"; };
 		63EAFD6A2CED33EF006349CB /* AveriaSansLibre-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Light.ttf"; sourceTree = "<group>"; };
 		63EAFD6B2CED33EF006349CB /* AveriaSansLibre-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Regular.ttf"; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				63339DCD2CFB8DF8005302B8 /* Event.swift */,
+				63EA4E772CFC96DF00E9842A /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,7 +161,8 @@
 				63AB4BDB2CF390DB00CD923C /* AppModel.swift */,
 				639B55842CEA8C470062F7CC /* ContentView.swift */,
 				63339DCC2CFB8DED005302B8 /* Model */,
-				63AB4BD42CF327A300CD923C /* Authentication */,
+				63EA4E732CFC92C400E9842A /* View */,
+				63EA4E742CFC92EE00E9842A /* ViewModel */,
 				63AB4BCD2CF0FC6900CD923C /* DesignComponents */,
 				639B55832CEA8C470062F7CC /* Assets.xcassets */,
 				63AB4BCA2CF0F47600CD923C /* Utils */,
@@ -188,13 +194,21 @@
 			path = DesignComponents;
 			sourceTree = "<group>";
 		};
-		63AB4BD42CF327A300CD923C /* Authentication */ = {
+		63EA4E732CFC92C400E9842A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				63AB4BC82CF0F23F00CD923C /* AuthenticationView.swift */,
+				63EA4E752CFC931400E9842A /* CreateEventView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		63EA4E742CFC92EE00E9842A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				63AB4BD52CF327EE00CD923C /* AuthenticationViewModel.swift */,
 			);
-			path = Authentication;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		63EAFD682CED33CA006349CB /* Fonts */ = {
@@ -393,8 +407,10 @@
 				63AB4BD62CF327EE00CD923C /* AuthenticationViewModel.swift in Sources */,
 				63AB4BC92CF0F23F00CD923C /* AuthenticationView.swift in Sources */,
 				639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */,
+				63EA4E782CFC96DF00E9842A /* Category.swift in Sources */,
 				63AB4BD82CF32E0500CD923C /* Logger+Extension.swift in Sources */,
 				63339DCE2CFB8DFC005302B8 /* Event.swift in Sources */,
+				63EA4E762CFC931400E9842A /* CreateEventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
