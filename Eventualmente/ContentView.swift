@@ -70,4 +70,5 @@ extension ContentView {
 
 #Preview {
     ContentView()
+        .environment(AppModel())
 }
