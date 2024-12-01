@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 enum AppState: Equatable {
     case loading
@@ -27,9 +28,15 @@ enum Tab: Equatable {
 class AppModel {
     var state: AppState = .loading
     var selectedTab: Tab = .explore
+    let database = Firestore.firestore()
 
     init() {
         registerAuthStateHandler()
+
+        // Disable database persistence
+        let settings = FirestoreSettings()
+        settings.cacheSettings = MemoryCacheSettings()
+        database.settings = settings
     }
 
     private var authStateHandle: AuthStateDidChangeListenerHandle?
