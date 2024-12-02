@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var authenticationViewModel = AuthenticationViewModel()
 
     var body: some View {
-        NavigationStack {
+        Group {
             switch appModel.state {
             case .loading:
                 ProgressView()
@@ -71,4 +71,5 @@ extension ContentView {
 #Preview {
     ContentView()
         .environment(AppModel())
+        .tint(.accent)
 }
