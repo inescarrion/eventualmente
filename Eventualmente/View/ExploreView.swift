@@ -24,6 +24,7 @@ struct ExploreView: View {
     @State private var selectedViewMode: ViewMode = .list
     @State private var searchText: String = ""
     @State private var selectedSortOption: SortOption = .date
+    @State private var processedEvents: [Event] = []
 
     var body: some View {
         NavigationStack {
@@ -55,6 +56,20 @@ struct ExploreView: View {
                 case .categoryZA:
                     $events.predicates = [.orderBy("categoryName", true)]
                 }
+                processedEvents = events
+            }
+            .onChange(of: events.count) { oldValue, newValue in
+                // Initialize events list with all the events
+                if oldValue == 0 && newValue > 0 {
+                    processedEvents = events
+                }
+            }
+            .onChange(of: searchText) { _, newValue in
+                if newValue.isEmpty {
+                    processedEvents = events
+                } else {
+                    processedEvents = events.filter( { $0.title.localizedCaseInsensitiveContains(newValue) })
+                }
             }
         }
     }
@@ -78,7 +93,7 @@ extension ExploreView {
     }
 
     var eventsList: some View {
-        ForEach(events, id: \.id) { event in
+        ForEach(processedEvents, id: \.id) { event in
             NavigationLink {
                 EventDetailView(event: event)
             } label: {
