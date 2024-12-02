@@ -32,7 +32,7 @@ extension ContentView {
     func tabView(user: User) -> some View {
         @Bindable var appModel = appModel
         return TabView(selection: $appModel.selectedTab) {
-            Text("Explorar")
+            ExploreView()
                 .tabItem {
                     Label("Explorar", systemImage: "magnifyingglass")
                 }
