@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct EventListToolbar: ToolbarContent {
+struct EventListToolbar<Picker: View>: ToolbarContent{
     let title: String
-    let sortButtonAction: () -> Void
+    let sortMenuPicker: () -> Picker
     let filterButtonAction: () -> Void
 
     var body: some ToolbarContent {
@@ -20,8 +20,8 @@ struct EventListToolbar: ToolbarContent {
         }
 
         ToolbarItem(placement: .topBarTrailing) {
-            Button {
-                sortButtonAction()
+            Menu {
+                sortMenuPicker()
             } label: {
                 HStack(spacing: 4) {
                     Image(systemName: "arrow.up.arrow.down")

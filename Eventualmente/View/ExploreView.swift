@@ -13,10 +13,17 @@ enum ViewMode: String, CaseIterable {
     case calendar = "Calendario"
 }
 
+enum SortOption: String, CaseIterable {
+    case date = "Fecha"
+    case categoryAZ = "Categoría (A-Z)"
+    case categoryZA = "Categoría (Z-A)"
+}
+
 struct ExploreView: View {
-    @FirestoreQuery(collectionPath: "events") var events: [Event]
+    @FirestoreQuery(collectionPath: "events", predicates: [.orderBy("date", false)]) var events: [Event]
     @State private var selectedViewMode: ViewMode = .list
     @State private var searchText: String = ""
+    @State private var selectedSortOption: SortOption = .date
 
     var body: some View {
         NavigationStack {
@@ -37,13 +44,31 @@ struct ExploreView: View {
             }
             .searchable(text: $searchText, placement: .automatic, prompt: "Buscar")
             .toolbar {
-                EventListToolbar(title: "Explorar", sortButtonAction: {}, filterButtonAction: {})
+                EventListToolbar(title: "Explorar", sortMenuPicker: { picker }, filterButtonAction: {})
+            }
+            .onChange(of: selectedSortOption) {
+                switch selectedSortOption {
+                case .date:
+                    $events.predicates = [.orderBy("date", false)]
+                case .categoryAZ:
+                    $events.predicates = [.orderBy("categoryName", false)]
+                case .categoryZA:
+                    $events.predicates = [.orderBy("categoryName", true)]
+                }
             }
         }
     }
 }
 
 extension ExploreView {
+    var picker: some View {
+        Picker("SortMenu", selection: $selectedSortOption) {
+            ForEach(SortOption.allCases, id: \.rawValue) {
+                Text($0.rawValue).tag($0)
+            }
+        }
+    }
+
     func listModeView() -> some View {
         List {
             Section("Todos los eventos") {
