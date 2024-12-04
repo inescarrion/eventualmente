@@ -24,7 +24,7 @@ struct ExploreView: View {
     @State private var selectedViewMode: ViewMode = .list
     @State private var searchText: String = ""
     @State private var selectedSortOption: SortOption = .date
-    @State private var processedEvents: [Event] = []
+    @State private var eventsShown: [Event] = []
 
     var body: some View {
         NavigationStack {
@@ -56,19 +56,19 @@ struct ExploreView: View {
                 case .categoryZA:
                     $events.predicates = [.orderBy("categoryName", true)]
                 }
-                processedEvents = events
+                eventsShown = events
             }
             .onChange(of: events.count) { oldValue, newValue in
                 // Initialize events list with all the events
                 if oldValue == 0 && newValue > 0 {
-                    processedEvents = events
+                    eventsShown = events
                 }
             }
             .onChange(of: searchText) { _, newValue in
                 if newValue.isEmpty {
-                    processedEvents = events
+                    eventsShown = events
                 } else {
-                    processedEvents = events.filter( { $0.title.localizedCaseInsensitiveContains(newValue) })
+                    eventsShown = events.filter( { $0.title.localizedCaseInsensitiveContains(newValue) })
                 }
             }
         }
@@ -89,11 +89,16 @@ extension ExploreView {
             Section("Todos los eventos") {
                 eventsList
             }
+            .opacity(eventsShown.isEmpty ? 0 : 1)
+        }
+        .overlay(alignment: .center) {
+            NoResults(message: "No se ha encontrado ningún evento")
+                .opacity(eventsShown.isEmpty ? 1 : 0)
         }
     }
 
     var eventsList: some View {
-        ForEach(processedEvents, id: \.id) { event in
+        ForEach(eventsShown, id: \.id) { event in
             NavigationLink {
                 EventDetailView(event: event)
             } label: {
@@ -107,7 +112,11 @@ extension ExploreView {
             Section {
                 Text("[CALENDARIO]")
             }
-            eventsList
+            if eventsShown.isEmpty {
+                Text("No se ha encontrado ningún evento.")
+            } else {
+                eventsList
+            }
         }
     }
 }

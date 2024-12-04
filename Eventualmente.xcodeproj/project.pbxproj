@@ -25,6 +25,7 @@
 		63AB4BD62CF327EE00CD923C /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BD52CF327EE00CD923C /* AuthenticationViewModel.swift */; };
 		63AB4BD82CF32E0500CD923C /* Logger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */; };
 		63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BDB2CF390DB00CD923C /* AppModel.swift */; };
+		63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8725A2CFFBEDB003A6906 /* NoResults.swift */; };
 		63CE8B362CE53E630089BC39 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B352CE53E630089BC39 /* FirebaseAuth */; };
 		63CE8B382CE53E630089BC39 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B372CE53E630089BC39 /* FirebaseFirestore */; };
 		63EA4E762CFC931400E9842A /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EA4E752CFC931400E9842A /* CreateEventView.swift */; };
@@ -74,6 +75,7 @@
 		63AB4BD52CF327EE00CD923C /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extension.swift"; sourceTree = "<group>"; };
 		63AB4BDB2CF390DB00CD923C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		63B8725A2CFFBEDB003A6906 /* NoResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResults.swift; sourceTree = "<group>"; };
 		63EA4E752CFC931400E9842A /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		63EA4E772CFC96DF00E9842A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		63EAFD692CED33EF006349CB /* AveriaSansLibre-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AveriaSansLibre-Bold.ttf"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				63AB4BCE2CF0FC8F00CD923C /* CustomButtons.swift */,
 				63AB4BD22CF31F2900CD923C /* ErrorMessage.swift */,
 				63339DCA2CFB8A93005302B8 /* EventListItem.swift */,
+				63B8725A2CFFBEDB003A6906 /* NoResults.swift */,
 			);
 			path = DesignComponents;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				63EAFD712CED3D5D006349CB /* Font+Extensions.swift in Sources */,
 				63AB4BCF2CF0FC8F00CD923C /* CustomButtons.swift in Sources */,
 				63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */,
+				63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */,
 				636E0EC92CFE184D005F6779 /* EventDetailView.swift in Sources */,
 				639B558B2CEA8C470062F7CC /* ContentView.swift in Sources */,
 				636E0EC72CFE13C5005F6779 /* ExploreView.swift in Sources */,
