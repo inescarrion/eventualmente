@@ -17,8 +17,6 @@ enum AppState: Equatable {
 
 enum Tab: Equatable {
     case explore
-    case favourites
-    case myEvents
     case groups
     case myAccount
 }

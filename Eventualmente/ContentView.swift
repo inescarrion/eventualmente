@@ -37,16 +37,6 @@ extension ContentView {
                     Label("Explorar", systemImage: "magnifyingglass")
                 }
                 .tag(Tab.explore)
-            Text("Favoritos")
-                .tabItem {
-                    Label("Favoritos", systemImage: "heart")
-                }
-                .tag(Tab.favourites)
-            Text("Mis eventos")
-                .tabItem {
-                    Label("Mis eventos", systemImage: "calendar.badge.plus")
-                }
-                .tag(Tab.myEvents)
             Text("Grupos")
                 .tabItem {
                     Label("Grupos", systemImage: "person.3")

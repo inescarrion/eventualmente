@@ -46,7 +46,12 @@ struct ExploreView: View {
             .searchable(text: $searchText, placement: .automatic, prompt: "Buscar")
             .toolbar {
                 EventListToolbar(title: "Explorar", sortMenuPicker: { picker }, filterButtonAction: {})
+
+                ToolbarItem(placement: .bottomBar) {
+                    toolbarButtons
+                }
             }
+            .toolbarBackground(.visible, for: .bottomBar)
             .onChange(of: selectedSortOption) {
                 switch selectedSortOption {
                 case .date:
@@ -76,6 +81,20 @@ struct ExploreView: View {
 }
 
 extension ExploreView {
+    var toolbarButtons: some View {
+            HStack {
+                Button("Todos") {}
+                    .bold()
+                Button("Favoritos") {}
+                    .foregroundStyle(.gray)
+                Button("Mis eventos") {}
+                    .foregroundStyle(.gray)
+                Button("Crear", systemImage: "plus") {}
+                    .buttonStyle(.borderedProminent)
+                    .padding(.leading)
+            }
+    }
+
     var picker: some View {
         Picker("SortMenu", selection: $selectedSortOption) {
             ForEach(SortOption.allCases, id: \.rawValue) {
