@@ -1,20 +1,12 @@
-//
-//  TabToolbar.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 2/12/24.
-//
-
 import SwiftUI
 
-struct EventListToolbar<Picker: View>: ToolbarContent{
-    let title: String
+struct ExploreToolbarContent<Picker: View>: ToolbarContent{
     let sortMenuPicker: () -> Picker
     let filterButtonAction: () -> Void
 
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
-            Text(title.coloredFirstLetter)
+            Text("Explorar".coloredFirstLetter)
                 .font(.customTitle1)
                 .padding(.leading, 4)
         }
@@ -38,6 +30,20 @@ struct EventListToolbar<Picker: View>: ToolbarContent{
                     Image(systemName: "line.3.horizontal.decrease")
                     Text("Filtrar")
                 }
+            }
+        }
+
+        ToolbarItem(placement: .bottomBar) {
+            HStack {
+                Button("Todos") {}
+                    .bold()
+                Button("Favoritos") {}
+                    .foregroundStyle(.gray)
+                Button("Mis eventos") {}
+                    .foregroundStyle(.gray)
+                Button("Crear", systemImage: "plus") {}
+                    .buttonStyle(.borderedProminent)
+                    .padding(.leading)
             }
         }
     }

@@ -1,10 +1,3 @@
-//
-//  CustomButton.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 22/11/24.
-//
-
 import SwiftUI
 
 struct CustomPrimaryButton: View {

@@ -1,10 +1,3 @@
-//
-//  CreateEventView.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 1/12/24.
-//
-
 import SwiftUI
 import FirebaseFirestore
 

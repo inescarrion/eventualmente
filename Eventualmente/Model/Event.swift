@@ -1,13 +1,7 @@
-//
-//  Event.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 30/11/24.
-//
 import SwiftUI
 import FirebaseFirestore
 
-struct Event: Codable {
+struct Event: Codable, Equatable {
     @DocumentID var id: String?
 
     let userId: String?

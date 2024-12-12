@@ -1,10 +1,3 @@
-//
-//  NoResults.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 3/12/24.
-//
-
 import SwiftUI
 
 struct NoResults: View {

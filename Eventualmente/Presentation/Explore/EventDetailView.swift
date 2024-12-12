@@ -1,10 +1,3 @@
-//
-//  EventDetailView.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 2/12/24.
-//
-
 import SwiftUI
 
 struct EventDetailView: View {

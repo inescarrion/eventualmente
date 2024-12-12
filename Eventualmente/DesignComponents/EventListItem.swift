@@ -1,10 +1,3 @@
-//
-//  EventList.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 30/11/24.
-//
-
 import SwiftUI
 
 struct EventListItem: View {
