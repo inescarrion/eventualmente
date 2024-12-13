@@ -13,5 +13,7 @@ struct EventDetailView: View {
 }
 
 #Preview {
-    EventDetailView(event: .init(userId: "", title: "Event title", categoryName: "", subcategoryName: "", location: "", date: .init(), link: "", moreInfo: ""))
+    EventDetailView(event: .init(userId: "", groupId: "", usersFavourite: [], title: "Event title",
+        categoryName: "", subcategoryName: "", location: "",
+        date: .init(), link: "", moreInfo: ""))
 }

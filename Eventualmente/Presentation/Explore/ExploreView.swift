@@ -4,7 +4,8 @@ import FirebaseFirestore
 import CalendarView
 
 struct ExploreView: View {
-    @Bindable private var vm = ExploreViewModel()
+    @Environment(AppModel.self) private var appModel
+    @State private var vm = ExploreViewModel()
     @FirestoreQuery(
         collectionPath: "events",
         predicates: [
@@ -36,8 +37,10 @@ struct ExploreView: View {
                 }
                 .searchable(text: $vm.searchText, placement: .automatic, prompt: "Buscar")
                 .toolbar {
-                    ExploreToolbarContent(sortMenuPicker: { picker }, filterButtonAction: {})
+                    ExploreNavigationBar(sortMenuPicker: { picker }, filterButtonAction: {})
+                    ExploreBottomToolbar(vm: vm, userId: appModel.state.userId)
                 }
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.visible, for: .bottomBar)
                 .onChange(of: events) { _, newValue in
                     vm.eventsShown = newValue
@@ -51,6 +54,9 @@ struct ExploreView: View {
                     vm.updateViewMode(viewMode: newValue)
                     $events.predicates = vm.allPredicates
                 }
+                .onChange(of: vm.selectedSubsection) { _, _ in
+                    $events.predicates = vm.allPredicates
+                }
                 .onChange(of: vm.visibleMonth) { _, _ in
                     vm.updateDatePredicates(selectedDate: nil)
                     $events.predicates = vm.allPredicates
@@ -62,6 +68,11 @@ struct ExploreView: View {
                 }
                 .onChange(of: vm.searchText) { _, newValue in
                     vm.eventsShown = newValue.isEmpty ? events : events.filter({ $0.title.localizedCaseInsensitiveContains(newValue) })
+                }
+                .sheet(isPresented: $vm.isCreatingEvent) {
+                    NavigationStack {
+                        CreateEventView(userId: appModel.state.userId, groupId: "")
+                    }
                 }
             }
         }
@@ -79,14 +90,22 @@ extension ExploreView {
     }
 
     var listModeView: some View {
-        List {
-            Section("Todos los eventos") {
+        var sectionTitle: String {
+            switch vm.selectedSubsection {
+            case .allEvents: "Todos los eventos"
+            case .favorites: "Favoritos"
+            case .myEvents: "Mis eventos"
+            }
+        }
+
+        return List {
+            Section(sectionTitle) {
                 eventsList
             }
             .opacity(vm.eventsShown.isEmpty ? 0 : 1)
         }
         .overlay(alignment: .center) {
-            NoResults(message: "No se ha encontrado ningún evento")
+            NoResults(message: "No se ha encontrado ningún evento, prueba a crear uno.")
                 .opacity(vm.eventsShown.isEmpty ? 1 : 0)
         }
     }
@@ -134,6 +153,7 @@ extension ExploreView {
 #Preview {
     NavigationStack {
         ExploreView()
+            .environment(AppModel())
     }
     .tint(.accent)
 }

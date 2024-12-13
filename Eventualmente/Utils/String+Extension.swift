@@ -7,4 +7,8 @@ extension String {
         let remainingLetters = self.dropFirst()
         return "\(Text(firstLetter).foregroundStyle(.accent))\(Text(remainingLetters))"
     }
+
+    var isEmptyOrWhitespace: Bool {
+        self.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    }
 }

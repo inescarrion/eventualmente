@@ -6,6 +6,14 @@ enum AppState: Equatable {
     case loading
     case unauthenticated
     case authenticated(user: User)
+
+    var userId: String {
+        switch self {
+        case .loading: return ""
+        case .unauthenticated: return ""
+        case .authenticated(user: let user): return user.uid
+        }
+    }
 }
 
 enum Tab: Equatable {

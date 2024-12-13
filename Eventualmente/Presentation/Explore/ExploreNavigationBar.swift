@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ExploreToolbarContent<Picker: View>: ToolbarContent{
+struct ExploreNavigationBar<Picker: View>: ToolbarContent {
     let sortMenuPicker: () -> Picker
     let filterButtonAction: () -> Void
 
@@ -30,20 +30,6 @@ struct ExploreToolbarContent<Picker: View>: ToolbarContent{
                     Image(systemName: "line.3.horizontal.decrease")
                     Text("Filtrar")
                 }
-            }
-        }
-
-        ToolbarItem(placement: .bottomBar) {
-            HStack {
-                Button("Todos") {}
-                    .bold()
-                Button("Favoritos") {}
-                    .foregroundStyle(.gray)
-                Button("Mis eventos") {}
-                    .foregroundStyle(.gray)
-                Button("Crear", systemImage: "plus") {}
-                    .buttonStyle(.borderedProminent)
-                    .padding(.leading)
             }
         }
     }

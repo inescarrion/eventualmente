@@ -2,6 +2,7 @@ import SwiftUI
 import Firebase
 import FirebaseCore
 import FirebaseAuth
+import FirebaseFirestore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(
@@ -24,8 +25,10 @@ struct EventualmenteApp: App {
         appModel = AppModel()
 
         UISegmentedControl.appearance().selectedSegmentTintColor = .accent
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 17)], for: .selected)
-        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 17)], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes(
+            [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
     }
 
     var body: some Scene {

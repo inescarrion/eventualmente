@@ -25,16 +25,18 @@ extension ContentView {
     func tabView(user: User) -> some View {
         @Bindable var appModel = appModel
         return TabView(selection: $appModel.selectedTab) {
-            ExploreView()
-                .tabItem {
-                    Label("Explorar", systemImage: "magnifyingglass")
-                }
-                .tag(Tab.explore)
-            Text("Grupos")
-                .tabItem {
-                    Label("Grupos", systemImage: "person.3")
-                }
-                .tag(Tab.groups)
+            Group {
+                ExploreView()
+                    .tabItem {
+                        Label("Explorar", systemImage: "magnifyingglass")
+                    }
+                    .tag(Tab.explore)
+                    .environment(appModel)
+                Text("Grupos")
+                    .tabItem {
+                        Label("Grupos", systemImage: "person.3")
+                    }
+                    .tag(Tab.groups)
                 List {
                     Section("Correo electrónico") {
                         Text(user.email!)
@@ -47,6 +49,8 @@ extension ContentView {
                     Label("Mi cuenta", systemImage: "person.crop.circle")
                 }
                 .tag(Tab.myAccount)
+            }
+            .toolbarBackground(.visible, for: .tabBar)
         }
     }
 }

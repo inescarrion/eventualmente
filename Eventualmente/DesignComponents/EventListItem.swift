@@ -1,4 +1,5 @@
 import SwiftUI
+import FirebaseFirestore
 
 struct EventListItem: View {
     let event: Event
@@ -7,26 +8,26 @@ struct EventListItem: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(event.title)
                 .fontWeight(.semibold)
-            if let categoryName = event.categoryName {
+            if !event.categoryName.isEmpty {
                 HStack(spacing: 0) {
-                    Text(categoryName)
+                    Text(event.categoryName)
                     Group {
                         Text(" | ")
-                        Text(event.subcategoryName ?? "")
+                        Text(event.subcategoryName)
                     }
-                    .opacity(event.categoryName == nil ? 0 : 1)
+                    .opacity(event.subcategoryName.isEmpty ? 0 : 1)
                 }
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             }
             HStack(spacing: 4) {
-                if let location = event.location {
+                if !event.location.isEmpty {
                     Image(systemName: "mappin.and.ellipse")
-                    Text(location)
+                    Text(event.location)
                     Text(" | ")
                 }
                 Image(systemName: "calendar")
-                Text(event.date.formatted(date: .numeric, time: .omitted))
+                Text(event.date.dateValue().formatted(date: .numeric, time: .omitted))
             }
             .font(.footnote)
         }
@@ -35,7 +36,15 @@ struct EventListItem: View {
 
 #Preview {
     List {
-        EventListItem(event: .init(userId: nil, title: "Event title", categoryName: "Category", subcategoryName: "Subcategory", location: "Location", date: .now, link: "https://example.com", moreInfo: "More info"))
-        EventListItem(event: .init(userId: nil, title: "Private event with less information", categoryName: nil, subcategoryName: nil, location: nil, date: .now, link: nil, moreInfo: nil))
+        EventListItem(event: .init(
+            userId: "", groupId: "", usersFavourite: [], title: "Event title",
+            categoryName: "Category", subcategoryName: "Subcategory",
+            location: "Location", date: Timestamp(), link: "", moreInfo: ""
+        ))
+        EventListItem(event: .init(
+            userId: "", groupId: "", usersFavourite: [],
+            title: "Private event with less information", categoryName: "",
+            subcategoryName: "", location: "", date: Timestamp(), link: "", moreInfo: ""
+        ))
     }
 }

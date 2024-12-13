@@ -7,11 +7,12 @@ struct NoResults: View {
             Image("NoResults")
             Text(message)
                 .fontWeight(.semibold)
+                .multilineTextAlignment(.center)
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 50)
     }
 }
 
 #Preview {
-    NoResults(message: "No se ha encontrado ningún evento")
+    NoResults(message: "No se ha encontrado ningún evento, prueba a crear uno.")
 }

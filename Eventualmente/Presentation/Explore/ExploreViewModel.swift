@@ -10,11 +10,14 @@ class ExploreViewModel {
         .where("date", isGreaterThan: Timestamp(date: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!))
     ]
     var datePredicates: [QueryPredicate] = []
+    var subsectionPredicates: [QueryPredicate] = []
     var allPredicates: [QueryPredicate] {
-        return basePredicates + datePredicates
+        return basePredicates + subsectionPredicates + datePredicates
     }
 
     var selectedViewMode: ViewMode = .list
+    var selectedSubsection: ToolbarSubsections = .allEvents
+    var isCreatingEvent: Bool = false
     var searchText: String = ""
     var selectedSortOption: SortOption = .date
 
@@ -66,7 +69,7 @@ class ExploreViewModel {
 
     func addCalendarDecorations(events: [Event]) {
         if selectedDate == nil {
-            decoratedDates = Set(events.map({ Calendar.current.dateComponents(in: .current, from: $0.date) }))
+            decoratedDates = Set(events.map({ Calendar.current.dateComponents(in: .current, from: $0.date.dateValue()) }))
         }
     }
 }
@@ -74,6 +77,12 @@ class ExploreViewModel {
 enum ViewMode: String, CaseIterable {
     case list = "Lista"
     case calendar = "Calendario"
+}
+
+enum ToolbarSubsections: String, CaseIterable {
+    case allEvents = "Todos"
+    case favorites = "Favoritos"
+    case myEvents = "Mis eventos"
 }
 
 enum SortOption: String, CaseIterable {
