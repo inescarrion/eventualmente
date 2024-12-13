@@ -17,15 +17,7 @@ struct ExploreView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                Picker("", selection: $vm.selectedViewMode) {
-                    ForEach(ViewMode.allCases, id: \.rawValue) {
-                        Text($0.rawValue).tag($0)
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.bottom)
-                .pickerStyle(.segmented)
-                .background(.toolbarBackground)
+                viewModePicker
                 Divider()
                 Group {
                     switch vm.selectedViewMode {
@@ -37,13 +29,14 @@ struct ExploreView: View {
                 }
                 .searchable(text: $vm.searchText, placement: .automatic, prompt: "Buscar")
                 .toolbar {
-                    ExploreNavigationBar(sortMenuPicker: { picker }, filterButtonAction: {})
+                    ExploreNavigationBar(sortMenuPicker: { sortPicker }, filterButtonAction: { vm.isFilterSheetPresented = true }, activeFilters: vm.activeFilters)
                     ExploreBottomToolbar(vm: vm, userId: appModel.state.userId)
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.visible, for: .bottomBar)
                 .onChange(of: events) { _, newValue in
                     vm.eventsShown = newValue
+                    applyLocationAndSubcategoryFilters()
                     vm.addCalendarDecorations(events: events)
                 }
                 .onChange(of: vm.selectedSortOption) {
@@ -69,9 +62,30 @@ struct ExploreView: View {
                 .onChange(of: vm.searchText) { _, newValue in
                     vm.eventsShown = newValue.isEmpty ? events : events.filter({ $0.title.localizedCaseInsensitiveContains(newValue) })
                 }
+                .onChange(of: vm.areFiltersApplied) { _, newValue in
+                    if !newValue {
+                        vm.eventsShown = events // Unapply filters
+                    } else {
+                        applyLocationAndSubcategoryFilters()
+                    }
+                    $events.predicates = vm.allPredicates
+                }
+                .onChange(of: vm.isFilterSheetPresented) { old, new in
+                    if old, !new {
+                        // On filter sheet dismissal
+                        applyLocationAndSubcategoryFilters()
+                        $events.predicates = vm.allPredicates
+                    }
+                }
                 .sheet(isPresented: $vm.isCreatingEvent) {
                     NavigationStack {
                         CreateEventView(userId: appModel.state.userId, groupId: "")
+                    }
+                }
+                .sheet(isPresented: $vm.isFilterSheetPresented) {
+                    NavigationStack {
+                        ExploreFiltersView()
+                            .environment(vm)
                     }
                 }
             }
@@ -81,7 +95,19 @@ struct ExploreView: View {
 
 // Subviews
 extension ExploreView {
-    var picker: some View {
+    var viewModePicker: some View {
+        Picker("", selection: $vm.selectedViewMode) {
+            ForEach(ViewMode.allCases, id: \.rawValue) {
+                Text($0.rawValue).tag($0)
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom)
+        .pickerStyle(.segmented)
+        .background(.toolbarBackground)
+    }
+
+    var sortPicker: some View {
         Picker("SortMenu", selection: $vm.selectedSortOption) {
             ForEach(SortOption.allCases, id: \.rawValue) {
                 Text($0.rawValue).tag($0)
@@ -145,6 +171,19 @@ extension ExploreView {
                 EventDetailView(event: event)
             } label: {
                 EventListItem(event: event)
+            }
+        }
+    }
+}
+
+extension ExploreView {
+    func applyLocationAndSubcategoryFilters() {
+        if vm.areFiltersApplied {
+            if !vm.location.isEmptyOrWhitespace {
+                vm.eventsShown = events.filter({ $0.location.localizedCaseInsensitiveContains(vm.location) })
+            }
+            if !vm.selectedSubcategories.isEmpty {
+                vm.eventsShown = events.filter({ vm.selectedSubcategories.contains($0.subcategoryName) })
             }
         }
     }

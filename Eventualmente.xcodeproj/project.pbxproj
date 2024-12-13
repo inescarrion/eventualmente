@@ -13,6 +13,8 @@
 		63339DCB2CFB8A93005302B8 /* EventListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63339DCA2CFB8A93005302B8 /* EventListItem.swift */; };
 		63339DCE2CFB8DFC005302B8 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63339DCD2CFB8DF8005302B8 /* Event.swift */; };
 		636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */; };
+		637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637349362D0C5756000FD3FE /* ExploreFiltersView.swift */; };
+		6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373493B2D0C67D8000FD3FE /* CategoryRow.swift */; };
 		639B55882CEA8C470062F7CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639B55812CEA8C470062F7CC /* Preview Assets.xcassets */; };
 		639B55892CEA8C470062F7CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 639B55832CEA8C470062F7CC /* Assets.xcassets */; };
 		639B558A2CEA8C470062F7CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 639B55862CEA8C470062F7CC /* GoogleService-Info.plist */; };
@@ -68,6 +70,8 @@
 		63394DD52CB5E100005517E8 /* EventualmenteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DDF2CB5E100005517E8 /* EventualmenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreNavigationBar.swift; sourceTree = "<group>"; };
+		637349362D0C5756000FD3FE /* ExploreFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreFiltersView.swift; sourceTree = "<group>"; };
+		6373493B2D0C67D8000FD3FE /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
 		639B55812CEA8C470062F7CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		639B55832CEA8C470062F7CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		639B55842CEA8C470062F7CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		637349382D0C5873000FD3FE /* FilterEvents */ = {
+			isa = PBXGroup;
+			children = (
+				637349362D0C5756000FD3FE /* ExploreFiltersView.swift */,
+				6373493B2D0C67D8000FD3FE /* CategoryRow.swift */,
+			);
+			path = FilterEvents;
+			sourceTree = "<group>";
+		};
 		639B55822CEA8C470062F7CC /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +263,7 @@
 				636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */,
 				632EEA052D0B9A3600D12320 /* ExploreBottomToolbar.swift */,
 				63DDB9482D08405C00C9189E /* EventDetailView.swift */,
+				637349382D0C5873000FD3FE /* FilterEvents */,
 				632EEA072D0BA85E00D12320 /* CreateEvent */,
 			);
 			path = Explore;
@@ -461,10 +475,12 @@
 				63DDB94D2D08405C00C9189E /* ExploreView.swift in Sources */,
 				63DDB94E2D08405C00C9189E /* AuthenticationView.swift in Sources */,
 				63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */,
+				6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */,
 				639B558B2CEA8C470062F7CC /* ContentView.swift in Sources */,
 				63AB4BD32CF31F2900CD923C /* ErrorMessage.swift in Sources */,
 				63AB4BD12CF3184D00CD923C /* FieldModifier.swift in Sources */,
 				63AB4BD62CF327EE00CD923C /* AuthenticationViewModel.swift in Sources */,
+				637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */,
 				636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */,
 				639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */,
 				63EA4E782CFC96DF00E9842A /* Category.swift in Sources */,

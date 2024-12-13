@@ -11,13 +11,15 @@ class ExploreViewModel {
     ]
     var datePredicates: [QueryPredicate] = []
     var subsectionPredicates: [QueryPredicate] = []
+    var filterPredicates: [QueryPredicate] = []
     var allPredicates: [QueryPredicate] {
-        return basePredicates + subsectionPredicates + datePredicates
+        return basePredicates + subsectionPredicates + filterPredicates + datePredicates
     }
 
     var selectedViewMode: ViewMode = .list
     var selectedSubsection: ToolbarSubsections = .allEvents
     var isCreatingEvent: Bool = false
+    var isFilterSheetPresented: Bool = false
     var searchText: String = ""
     var selectedSortOption: SortOption = .date
 
@@ -25,6 +27,26 @@ class ExploreViewModel {
     var visibleMonth: DateComponents = Calendar.current.dateComponents([.year, .month], from: .now)
     var selectedDate: DateComponents?
     var decoratedDates: Set<DateComponents> = []
+
+    // Filters
+    var areFiltersApplied: Bool = false
+    var activeFilters: Int {
+        guard areFiltersApplied else { return 0 }
+        var count: Int = 0
+        count += selectedCategoriesNames.count
+        count += selectedSubcategories.count
+        count += startDate.startOfTheDay == .now.startOfTheDay ? 0 : 1
+        count += endDate.startOfTheDay == .now.startOfTheDay ? 0 : 1
+        count += location.isEmpty ? 0 : 1
+        return count
+    }
+    var categoriesListRows: [CategoryRow] = []
+    var selectedCategoriesNames: Set<String> = []
+    var selectedSubcategories: Set<String> = []
+    var startDate: Date = .now
+    var endDate: Date = .now
+    var isEndDateSelected: Bool = false
+    var location: String = ""
 
     var eventsShown: [Event] = []
 
@@ -65,6 +87,35 @@ class ExploreViewModel {
             ]
 
         }
+    }
+
+    func addFilterPredicates() {
+        filterPredicates = []
+        if !selectedCategoriesNames.isEmpty {
+            filterPredicates.append(.where("categoryName", isIn: Array(selectedCategoriesNames)))
+        }
+        if startDate > .now {
+            filterPredicates.append(.where("date", isGreaterThanOrEqualTo: Timestamp(date: startDate.startOfTheDay)))
+        }
+        if isEndDateSelected {
+            filterPredicates.append(.where("date", isLessThanOrEqualTo: Timestamp(date: endDate.endOfTheDay)))
+        }
+        areFiltersApplied = true
+        if activeFilters == 0 {
+            areFiltersApplied = false
+        }
+    }
+
+    func clearFilters() {
+        areFiltersApplied = false
+        filterPredicates = []
+        categoriesListRows = []
+        selectedCategoriesNames = []
+        selectedSubcategories = []
+        startDate = .now
+        endDate = .now
+        isEndDateSelected = false
+        location = ""
     }
 
     func addCalendarDecorations(events: [Event]) {
