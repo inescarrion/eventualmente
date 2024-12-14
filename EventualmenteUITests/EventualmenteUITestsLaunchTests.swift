@@ -1,10 +1,3 @@
-//
-//  EventualmenteUITestsLaunchTests.swift
-//  EventualmenteUITests
-//
-//  Created by Inés Carrión on 8/10/24.
-//
-
 import XCTest
 
 final class EventualmenteUITestsLaunchTests: XCTestCase {

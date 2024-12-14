@@ -1,5 +1,5 @@
 {
-  "originHash" : "c63c63846d9c539229e96de38d6af51417e28c0ee9a0bc48bd0f0f19d923c329",
+  "originHash" : "71b28d53b5946b90ae492cad0c404c41389cea4e4cba11081f3b396c82702cae",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -17,6 +17,15 @@
       "state" : {
         "revision" : "61b85103a1aeed8218f17c794687781505fbbef5",
         "version" : "11.2.0"
+      }
+    },
+    {
+      "identity" : "calendarview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AllanJuenemann/CalendarView",
+      "state" : {
+        "revision" : "a0f913aff2bf63a808e60c9490fe034043613c5f",
+        "version" : "2.1.2"
       }
     },
     {

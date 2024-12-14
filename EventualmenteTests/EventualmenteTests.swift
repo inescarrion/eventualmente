@@ -1,10 +1,3 @@
-//
-//  EventualmenteTests.swift
-//  EventualmenteTests
-//
-//  Created by Inés Carrión on 8/10/24.
-//
-
 import Testing
 @testable import Eventualmente
 

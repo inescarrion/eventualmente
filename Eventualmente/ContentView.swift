@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 8/10/24.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -13,7 +6,7 @@ struct ContentView: View {
     @State private var authenticationViewModel = AuthenticationViewModel()
 
     var body: some View {
-        NavigationStack {
+        Group {
             switch appModel.state {
             case .loading:
                 ProgressView()
@@ -32,26 +25,18 @@ extension ContentView {
     func tabView(user: User) -> some View {
         @Bindable var appModel = appModel
         return TabView(selection: $appModel.selectedTab) {
-            Text("Explorar")
-                .tabItem {
-                    Label("Explorar", systemImage: "magnifyingglass")
-                }
-                .tag(Tab.explore)
-            Text("Favoritos")
-                .tabItem {
-                    Label("Favoritos", systemImage: "heart")
-                }
-                .tag(Tab.favourites)
-            Text("Mis eventos")
-                .tabItem {
-                    Label("Mis eventos", systemImage: "calendar.badge.plus")
-                }
-                .tag(Tab.myEvents)
-            Text("Grupos")
-                .tabItem {
-                    Label("Grupos", systemImage: "person.3")
-                }
-                .tag(Tab.groups)
+            Group {
+                ExploreView()
+                    .tabItem {
+                        Label("Explorar", systemImage: "magnifyingglass")
+                    }
+                    .tag(Tab.explore)
+                    .environment(appModel)
+                Text("Grupos")
+                    .tabItem {
+                        Label("Grupos", systemImage: "person.3")
+                    }
+                    .tag(Tab.groups)
                 List {
                     Section("Correo electrónico") {
                         Text(user.email!)
@@ -64,6 +49,8 @@ extension ContentView {
                     Label("Mi cuenta", systemImage: "person.crop.circle")
                 }
                 .tag(Tab.myAccount)
+            }
+            .toolbarBackground(.visible, for: .tabBar)
         }
     }
 }
@@ -71,4 +58,5 @@ extension ContentView {
 #Preview {
     ContentView()
         .environment(AppModel())
+        .tint(.accent)
 }

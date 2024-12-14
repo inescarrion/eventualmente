@@ -1,10 +1,3 @@
-//
-//  AppState.swift
-//  Eventualmente
-//
-//  Created by Inés Carrión on 24/11/24.
-//
-
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -13,12 +6,18 @@ enum AppState: Equatable {
     case loading
     case unauthenticated
     case authenticated(user: User)
+
+    var userId: String {
+        switch self {
+        case .loading: return ""
+        case .unauthenticated: return ""
+        case .authenticated(user: let user): return user.uid
+        }
+    }
 }
 
 enum Tab: Equatable {
     case explore
-    case favourites
-    case myEvents
     case groups
     case myAccount
 }
