@@ -1,7 +1,7 @@
 import SwiftUI
-import FirebaseFirestore
+@preconcurrency import FirebaseFirestore
 
-struct Event: Codable, Equatable {
+struct Event: Codable, Equatable, Sendable {
     @DocumentID var id: String?
 
     let userId: String
@@ -15,6 +15,7 @@ struct Event: Codable, Equatable {
 
     let title: String
     let categoryName: String
+    let categorySymbol: String
     let subcategoryName: String
     let location: String
     let date: Timestamp

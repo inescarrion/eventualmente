@@ -29,7 +29,10 @@ struct ExploreView: View {
                 }
                 .searchable(text: $vm.searchText, placement: .automatic, prompt: "Buscar")
                 .toolbar {
-                    ExploreNavigationBar(sortMenuPicker: { sortPicker }, filterButtonAction: { vm.isFilterSheetPresented = true }, activeFilters: vm.activeFilters)
+                    ExploreNavigationBar(
+                        sortMenuPicker: { sortPicker },
+                        filterButtonAction: { vm.isFilterSheetPresented = true },
+                        activeFilters: vm.activeFilters)
                     ExploreBottomToolbar(vm: vm, userId: appModel.state.userId)
                 }
                 .navigationBarTitleDisplayMode(.inline)
@@ -78,9 +81,7 @@ struct ExploreView: View {
                     }
                 }
                 .sheet(isPresented: $vm.isCreatingEvent) {
-                    NavigationStack {
-                        CreateEventView(userId: appModel.state.userId, groupId: "")
-                    }
+                    EventFormView(type: .create(userId: appModel.state.userId, groupId: ""))
                 }
                 .sheet(isPresented: $vm.isFilterSheetPresented) {
                     NavigationStack {
@@ -168,7 +169,7 @@ extension ExploreView {
     var eventsList: some View {
         ForEach(vm.eventsShown, id: \.id) { event in
             NavigationLink {
-                EventDetailView(event: event)
+                EventDetailView(event: event, userId: appModel.state.userId)
             } label: {
                 EventListItem(event: event)
             }

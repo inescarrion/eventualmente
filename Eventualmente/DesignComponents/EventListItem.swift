@@ -38,13 +38,13 @@ struct EventListItem: View {
     List {
         EventListItem(event: .init(
             userId: "", groupId: "", usersFavourite: [], title: "Event title",
-            categoryName: "Category", subcategoryName: "Subcategory",
+            categoryName: "Category", categorySymbol: "music.note", subcategoryName: "Subcategory",
             location: "Location", date: Timestamp(), link: "", moreInfo: ""
         ))
         EventListItem(event: .init(
             userId: "", groupId: "", usersFavourite: [],
             title: "Private event with less information", categoryName: "",
-            subcategoryName: "", location: "", date: Timestamp(), link: "", moreInfo: ""
+            categorySymbol: "music.note", subcategoryName: "", location: "", date: Timestamp(), link: "", moreInfo: ""
         ))
     }
 }
