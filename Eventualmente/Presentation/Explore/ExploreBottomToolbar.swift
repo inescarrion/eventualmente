@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ExploreBottomToolbar: ToolbarContent {
     let vm: ExploreViewModel
-    let userId: String
 
     var body: some ToolbarContent {
         ToolbarItem(placement: .bottomBar) {
@@ -15,10 +14,10 @@ struct ExploreBottomToolbar: ToolbarContent {
                             vm.subsectionPredicates = []
                         case .favorites:
                             vm.selectedSubsection = .favorites
-                            vm.subsectionPredicates = [.where("usersFavourite", arrayContainsAny: [userId])]
+                            vm.subsectionPredicates = [.where("usersFavourite", arrayContainsAny: [AppModel.userId])]
                         case .myEvents:
                             vm.selectedSubsection = .myEvents
-                            vm.subsectionPredicates = [.where("userId", isEqualTo: userId)]
+                            vm.subsectionPredicates = [.where("userId", isEqualTo: AppModel.userId)]
                         }
                     }
                     .foregroundStyle(vm.selectedSubsection == subsection ? .accent : .gray)
@@ -39,6 +38,6 @@ struct ExploreBottomToolbar: ToolbarContent {
 #Preview {
     EmptyView()
         .toolbar {
-            ExploreBottomToolbar(vm: ExploreViewModel(), userId: "")
+            ExploreBottomToolbar(vm: ExploreViewModel())
         }
 }

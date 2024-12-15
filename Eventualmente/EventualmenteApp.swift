@@ -36,6 +36,9 @@ struct EventualmenteApp: App {
             ContentView()
                 .environment(appModel)
                 .tint(.accent)
+                .onAppear {
+                    UIView.appearance().tintColor = UIColor(named: "AccentColor")
+                }
         }
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
-import FirebaseFirestore
+@preconcurrency import FirebaseFirestore
 
-struct PrivateGroup: Codable {
+struct PrivateGroup: Codable, Equatable, Sendable {
     @DocumentID var id: String?
 
     let name: String

@@ -34,7 +34,7 @@ struct ExploreView: View {
                         sortMenuPicker: { sortPicker },
                         filterButtonAction: { vm.isFilterSheetPresented = true },
                         activeFilters: vm.activeFilters)
-                    ExploreBottomToolbar(vm: vm, userId: appModel.state.userId)
+                    ExploreBottomToolbar(vm: vm)
                 }
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.visible, for: .bottomBar)
@@ -82,7 +82,7 @@ struct ExploreView: View {
                     }
                 }
                 .sheet(isPresented: $vm.isCreatingEvent) {
-                    EventFormView(type: .create(userId: appModel.state.userId, groupId: ""), isPublic: true)
+                    EventFormView(type: .create(userId: AppModel.userId, groupId: ""), isPublic: true)
                 }
                 .sheet(isPresented: $vm.isFilterSheetPresented) {
                     NavigationStack {
@@ -170,7 +170,7 @@ extension ExploreView {
     var eventsList: some View {
         ForEach(vm.eventsShown, id: \.id) { event in
             NavigationLink {
-                EventDetailView(event: event, userId: appModel.state.userId)
+                EventDetailView(event: event)
             } label: {
                 EventListItem(event: event)
             }

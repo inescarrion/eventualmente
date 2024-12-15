@@ -82,7 +82,7 @@ class EventFormViewModel {
             do {
                 try Firestore.firestore().collection("events").document().setData(from: event, merge: false)
             } catch {
-                Logger.global.error("Error creating event: \(error)")
+                Logger.global.error("Error creating event: \(error.localizedDescription)")
             }
         case .update(let event):
             guard let id = event.id else { return }
@@ -101,7 +101,7 @@ class EventFormViewModel {
             do {
                 try Firestore.firestore().collection("events").document(id).setData(from: updatedEvent, merge: true)
             } catch {
-                Logger.global.error("Error updating event: \(error)")
+                Logger.global.error("Error updating event: \(error.localizedDescription)")
             }
         }
     }

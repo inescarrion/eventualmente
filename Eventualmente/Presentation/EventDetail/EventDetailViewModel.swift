@@ -6,17 +6,15 @@ import OSLog
 @Observable
 class EventDetailViewModel {
     private(set) var event: Event
-    let userId: String
     var isFavourite: Bool {
-        event.usersFavourite.contains(userId)
+        event.usersFavourite.contains(AppModel.userId)
     }
     var isAuthor: Bool {
-        event.userId == userId
+        event.userId == AppModel.userId
     }
 
-    init(event: Event, userId: String) {
+    init(event: Event) {
         self.event = event
-        self.userId = userId
     }
 
     func updateFavourite() {
@@ -24,9 +22,9 @@ class EventDetailViewModel {
             if let id = event.id {
                 var usersFavourite = event.usersFavourite
                 if isFavourite {
-                    usersFavourite.removeAll(where: { $0 == userId })
+                    usersFavourite.removeAll(where: { $0 == AppModel.userId })
                 } else {
-                    usersFavourite.append(userId)
+                    usersFavourite.append(AppModel.userId)
                 }
                 let updatedEvent = Event(
                     userId: event.userId,
@@ -44,7 +42,7 @@ class EventDetailViewModel {
                 fetchUpdatedEvent(id: id)
             }
         } catch {
-            Logger.global.error("Error creating event: \(error)")
+            Logger.global.error("Error creating event: \(error.localizedDescription)")
         }
     }
 

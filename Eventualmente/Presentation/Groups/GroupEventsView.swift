@@ -12,7 +12,7 @@ struct GroupEventsView: View {
             Section("Eventos del grupo") {
                 ForEach(groupEvents, id: \.id) { event in
                     NavigationLink {
-                        EventDetailView(event: event, userId: appModel.state.userId)
+                        EventDetailView(event: event)
                     } label: {
                         EventListItem(event: event)
                     }
@@ -39,7 +39,7 @@ struct GroupEventsView: View {
             $groupEvents.predicates = [.where("groupId", isEqualTo: group.id!)]
         }
         .sheet(isPresented: $isCreatingEvent) {
-            EventFormView(type: .create(userId: appModel.state.userId, groupId: group.id!), isPublic: false)
+            EventFormView(type: .create(userId: AppModel.userId, groupId: group.id!), isPublic: false)
         }
     }
 }

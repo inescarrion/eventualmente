@@ -6,8 +6,8 @@ struct EventDetailView: View {
     @State private var isDeleteAlertPresented: Bool = false
     @State private var isUpdateSheetPresented: Bool = false
 
-    init(event: Event, userId: String) {
-        self.vm = EventDetailViewModel(event: event, userId: userId)
+    init(event: Event) {
+        self.vm = EventDetailViewModel(event: event)
     }
 
     var body: some View {
@@ -131,7 +131,7 @@ struct EventDetailView: View {
     NavigationStack {
         EventDetailView(event: .init(userId: "", groupId: "", usersFavourite: [], title: "Título del evento",
             categoryName: "Categoría", categorySymbol: "music.note", subcategoryName: "Subcategoría", location: "Ubicación",
-                                     date: .init(), link: "example.com", moreInfo: "Esta es una breve descripción del evento."), userId: "")
+                                     date: .init(), link: "example.com", moreInfo: "Esta es una breve descripción del evento."))
     }
     .tint(.accent)
 }

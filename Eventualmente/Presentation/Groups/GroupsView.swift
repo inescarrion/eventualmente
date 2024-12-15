@@ -3,8 +3,9 @@ import FirebaseFirestore
 
 struct GroupsView: View {
     @Environment(AppModel.self) private var appModel
-    @State private var vm = GroupsViewModel()
-    @FirestoreQuery(collectionPath: "groups") var groups: [PrivateGroup]
+    @Bindable private var vm = GroupsViewModel()
+    @FirestoreQuery(collectionPath: "groups", predicates: [.where(field: "membersIds", arrayContains: AppModel.userId)]) var groups: [PrivateGroup]
+    @State private var isJoinGroupAlertPresented: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -29,11 +30,23 @@ struct GroupsView: View {
 
                 ToolbarItem(placement: .primaryAction) {
                     Button("Unirse a grupo existente") {
-                        // TODO
+                        isJoinGroupAlertPresented = true
                     }
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
+            .alert("Introduce el código de invitación", isPresented: $isJoinGroupAlertPresented) {
+                TextField("Pega aquí el código", text: $vm.joinGroupId)
+                Button("Validar") {
+                    vm.joinGroup()
+                }
+                .keyboardShortcut(.defaultAction)
+                Button("Cancelar", role: .cancel) {
+                    isJoinGroupAlertPresented = false
+                }
+            } message: {
+                Text("Pide el código al creador del grupo (Grupo > Detalles > Añadir miembro)")
+            }
         }
     }
 }
