@@ -6,6 +6,7 @@ struct GroupsView: View {
     @Bindable private var vm = GroupsViewModel()
     @FirestoreQuery(collectionPath: "groups", predicates: [.where(field: "membersIds", arrayContains: AppModel.userId)]) var groups: [PrivateGroup]
     @State private var isJoinGroupAlertPresented: Bool = false
+    @State private var isCreatingGroup: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -17,7 +18,7 @@ struct GroupsView: View {
                     }
                 }
                 Button("+ Crear nuevo grupo") {
-                    // TODO
+                    isCreatingGroup = true
                 }
             }
             .listStyle(.insetGrouped)
@@ -35,6 +36,10 @@ struct GroupsView: View {
                 }
             }
             .toolbarBackground(.visible, for: .navigationBar)
+            .sheet(isPresented: $isCreatingGroup) {
+                CreateGroupView()
+                    .environment(vm)
+            }
             .alert("Introduce el código de invitación", isPresented: $isJoinGroupAlertPresented) {
                 TextField("Pega aquí el código", text: $vm.joinGroupId)
                 Button("Validar") {

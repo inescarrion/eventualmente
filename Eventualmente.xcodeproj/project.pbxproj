@@ -19,6 +19,7 @@
 		633688BE2D0F481A0081CA81 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */; };
 		633688C02D0F52DC0081CA81 /* GroupEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */; };
 		633688C52D0F68200081CA81 /* UIPasteboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688C42D0F68200081CA81 /* UIPasteboard+Extension.swift */; };
+		633688C72D0F8A0E0081CA81 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */; };
 		636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */; };
 		637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637349362D0C5756000FD3FE /* ExploreFiltersView.swift */; };
 		6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373493B2D0C67D8000FD3FE /* CategoryRow.swift */; };
@@ -80,6 +81,7 @@
 		633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventsView.swift; sourceTree = "<group>"; };
 		633688C42D0F68200081CA81 /* UIPasteboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extension.swift"; sourceTree = "<group>"; };
+		633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
 		63394DC52CB5E0FE005517E8 /* Eventualmente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventualmente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DD52CB5E100005517E8 /* EventualmenteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DDF2CB5E100005517E8 /* EventualmenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 				633688B92D0F460E0081CA81 /* GroupsView.swift */,
 				633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */,
 				633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */,
+				633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				63DDB94E2D08405C00C9189E /* AuthenticationView.swift in Sources */,
 				63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */,
 				633688BE2D0F481A0081CA81 /* GroupsViewModel.swift in Sources */,
+				633688C72D0F8A0E0081CA81 /* CreateGroupView.swift in Sources */,
 				6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */,
 				639B558B2CEA8C470062F7CC /* ContentView.swift in Sources */,
 				63AB4BD32CF31F2900CD923C /* ErrorMessage.swift in Sources */,
