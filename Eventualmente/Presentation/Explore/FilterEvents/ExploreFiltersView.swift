@@ -47,7 +47,9 @@ struct ExploreFiltersView: View {
         .onChange(of: categories) { _, newValue in
             if vm.categoriesListRows.isEmpty {
                 for category in newValue {
-                    vm.categoriesListRows.append(CategoryRow(isSelected: false, name: category.name, isSubcategory: false, subcategories: category.subcategories))
+                    vm.categoriesListRows.append(
+                        CategoryRow(isSelected: false, name: category.name, isSubcategory: false, subcategories: category.subcategories)
+                    )
                 }
             }
         }
@@ -83,7 +85,14 @@ extension ExploreFiltersView {
                         for subcategory in categoryRow.subcategories {
                             index += 1
                             let isSelected = vm.selectedSubcategories.contains(subcategory)
-                            vm.categoriesListRows.insert(.init(isSelected: isSelected, name: subcategory, isSubcategory: true, subcategories: []), at: index)
+                            vm.categoriesListRows.insert(
+                                .init(
+                                    isSelected: isSelected,
+                                    name: subcategory,
+                                    isSubcategory: true,
+                                    subcategories: []
+                                ),
+                                at: index)
                         }
                     }
                     categoryRow.isExpanded.toggle()
@@ -124,11 +133,15 @@ extension ExploreFiltersView {
             if vm.isEndDateSelected {
                 clearDateButton
             }
-            DatePicker("", selection: $vm.endDate, in: Calendar.current.date(byAdding: .day, value: 1, to: vm.startDate)!..., displayedComponents: .date)
-                .labelsHidden()
-                .overlay(alignment: .trailing) {
-                    addEndDateOverlay
-                }
+            DatePicker("",
+                selection: $vm.endDate,
+                in: Calendar.current.date(byAdding: .day, value: 1, to: vm.startDate)!...,
+                displayedComponents: .date
+            )
+            .labelsHidden()
+            .overlay(alignment: .trailing) {
+                addEndDateOverlay
+            }
         }
     }
 

@@ -48,13 +48,31 @@ struct CustomSecondaryButton: View {
     }
 }
 
-#Preview {
-    VStack {
-        CustomPrimaryButton("Primary button") {
-            print("Primary button tapped")
-        }
-        CustomSecondaryButton("Secondary button") {
-            print("Secondary button tapped")
+struct NavigationButtonLabel: View {
+    let icon: String
+    let text: String
+
+    var body: some View {
+        HStack(spacing: 4) {
+            Image(systemName: icon)
+            Text(text)
         }
     }
+}
+
+#Preview {
+    NavigationStack {
+        VStack {
+            CustomPrimaryButton("Primary button") {
+                print("Primary button tapped")
+            }
+            CustomSecondaryButton("Secondary button") {
+                print("Secondary button tapped")
+            }
+        }
+        .toolbar {
+            Button {} label: { NavigationButtonLabel(icon: "arrow.up.arrow.down", text: "Ordenar") }
+        }
+    }
+    .tint(.accent)
 }
