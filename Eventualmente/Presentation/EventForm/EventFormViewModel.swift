@@ -40,11 +40,11 @@ class EventFormViewModel {
     }
 
     var isFormValid: Bool {
-        if !userId.isEmpty {
+        if !groupId.isEmpty {
+            return !title.isEmptyOrWhitespace && selectedDate > .now
+        } else if !userId.isEmpty {
             return !title.isEmptyOrWhitespace && !selectedCategory.name.isEmptyOrWhitespace && !location.isEmptyOrWhitespace && selectedDate > .now
                 && (!link.isEmptyOrWhitespace || !moreInfo.isEmptyOrWhitespace)
-        } else if !groupId.isEmpty {
-            return !title.isEmptyOrWhitespace && selectedDate > .now
         } else {
             Logger.global.error("UserId and groupId are empty")
             return false

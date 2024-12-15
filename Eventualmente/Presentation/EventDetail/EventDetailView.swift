@@ -12,28 +12,32 @@ struct EventDetailView: View {
 
     var body: some View {
         List {
-            Section("CATEGORÍA Y SUBCATEGORÍA") {
-                HStack(spacing: 14) {
-                    Chip(text: vm.event.categoryName, symbolName: vm.event.categorySymbol, style: .primary)
-                    if !vm.event.subcategoryName.isEmpty {
-                        Chip(text: vm.event.subcategoryName, symbolName: vm.event.categorySymbol, style: .secondary)
+            if !vm.event.categoryName.isEmpty {
+                Section("CATEGORÍA Y SUBCATEGORÍA") {
+                    HStack(spacing: 14) {
+                        Chip(text: vm.event.categoryName, symbolName: vm.event.categorySymbol, style: .primary)
+                        if !vm.event.subcategoryName.isEmpty {
+                            Chip(text: vm.event.subcategoryName, symbolName: vm.event.categorySymbol, style: .secondary)
+                        }
                     }
                 }
-            }
-            .listRowSeparator(.hidden, edges: .bottom)
-            .alignmentGuide(.listRowSeparatorLeading) { _ in
-                return 0
-            }
-
-            Section("UBICACIÓN") {
-                HStack(spacing: 4) {
-                    Image(systemName: "mappin.and.ellipse")
-                    Text(vm.event.location)
+                .listRowSeparator(.hidden, edges: .bottom)
+                .alignmentGuide(.listRowSeparatorLeading) { _ in
+                    return 0
                 }
             }
-            .listRowSeparator(.hidden, edges: .bottom)
-            .alignmentGuide(.listRowSeparatorLeading) { _ in
-                return 0
+
+            if !vm.event.location.isEmpty {
+                Section("UBICACIÓN") {
+                    HStack(spacing: 4) {
+                        Image(systemName: "mappin.and.ellipse")
+                        Text(vm.event.location)
+                    }
+                }
+                .listRowSeparator(.hidden, edges: .bottom)
+                .alignmentGuide(.listRowSeparatorLeading) { _ in
+                    return 0
+                }
             }
 
             Section("FECHA Y HORA") {
@@ -76,7 +80,7 @@ struct EventDetailView: View {
         .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                if vm.isAuthor {
+                if vm.isAuthor, !vm.event.isPublic {
                     HStack {
                         Button {
                             isUpdateSheetPresented = true
@@ -102,7 +106,7 @@ struct EventDetailView: View {
         }
         .animation(.none, value: vm.isFavourite)
         .sheet(isPresented: $isUpdateSheetPresented) {
-            EventFormView(type: .update(event: vm.event))
+            EventFormView(type: .update(event: vm.event), isPublic: vm.event.isPublic)
         }
         .onChange(of: isUpdateSheetPresented) { _, isPresented in
             if !isPresented, let id = vm.event.id {

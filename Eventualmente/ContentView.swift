@@ -32,11 +32,12 @@ extension ContentView {
                     }
                     .tag(Tab.explore)
                     .environment(appModel)
-                Text("Grupos")
+                GroupsView()
                     .tabItem {
                         Label("Grupos", systemImage: "person.3")
                     }
                     .tag(Tab.groups)
+                    .environment(appModel)
                 List {
                     Section("Correo electrónico") {
                         Text(user.email!)

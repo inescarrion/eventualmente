@@ -5,9 +5,11 @@ struct EventFormView: View {
     @Environment(\.dismiss) var dismiss
     @FirestoreQuery(collectionPath: "categories") var categories: [Category]
     @State private var vm: EventFormViewModel
+    let isPublic: Bool
 
-    init(type: FormType) {
+    init(type: FormType, isPublic: Bool) {
         vm = EventFormViewModel(type: type)
+        self.isPublic = isPublic
     }
 
     var body: some View {
@@ -17,12 +19,12 @@ struct EventFormView: View {
                     TextField("Introduce un título descriptivo", text: $vm.title)
                 }
 
-                Section("Categoría") {
+                Section("Categoría\(isPublic ? "" : " (OPCIONAL)")") {
                     categoryPicker
                     subcategoryPicker
                 }
 
-                Section("Ubicación") {
+                Section("Ubicación\(isPublic ? "" : " (OPCIONAL)")") {
                     TextField("Nombre de la ciudad o pueblo", text: $vm.location)
                         .autocorrectionDisabled(true)
                 }
@@ -31,7 +33,7 @@ struct EventFormView: View {
                     dateHourPickers
                 }
 
-                Section("Más información") {
+                Section("Más información\(isPublic ? "" : " (OPCIONAL)")") {
                     TextField("Enlace a más información", text: $vm.link)
                         .autocorrectionDisabled(true)
                         .textInputAutocapitalization(.never)
@@ -106,7 +108,7 @@ extension EventFormView {
         isSheetPresented.toggle()
     }.sheet(isPresented: $isSheetPresented) {
         NavigationStack {
-            EventFormView(type: .create(userId: "", groupId: ""))
+            EventFormView(type: .create(userId: "", groupId: ""), isPublic: true)
         }
     }
 }

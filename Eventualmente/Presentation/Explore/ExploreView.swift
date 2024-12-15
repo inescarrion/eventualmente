@@ -9,6 +9,7 @@ struct ExploreView: View {
     @FirestoreQuery(
         collectionPath: "events",
         predicates: [
+            .where("groupId", isEqualTo: ""),
             .orderBy("date", false),
             .where("date", isGreaterThan: Timestamp(date: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!))
         ]
@@ -81,7 +82,7 @@ struct ExploreView: View {
                     }
                 }
                 .sheet(isPresented: $vm.isCreatingEvent) {
-                    EventFormView(type: .create(userId: appModel.state.userId, groupId: ""))
+                    EventFormView(type: .create(userId: appModel.state.userId, groupId: ""), isPublic: true)
                 }
                 .sheet(isPresented: $vm.isFilterSheetPresented) {
                     NavigationStack {
