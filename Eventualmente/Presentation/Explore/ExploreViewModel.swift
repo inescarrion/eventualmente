@@ -3,25 +3,23 @@ import FirebaseCore
 import FirebaseFirestore
 import SwiftUI
 
+@MainActor
 @Observable
 class ExploreViewModel {
-    var basePredicates: [QueryPredicate] = [
-        .orderBy("date", false),
-        .where("date", isGreaterThan: Timestamp(date: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!))
-    ]
-    var datePredicates: [QueryPredicate] = []
-    var subsectionPredicates: [QueryPredicate] = []
-    var filterPredicates: [QueryPredicate] = []
-    var allPredicates: [QueryPredicate] {
-        return basePredicates + subsectionPredicates + filterPredicates + datePredicates
-    }
-
-    var selectedViewMode: ViewMode = .list
     var selectedSubsection: ToolbarSubsections = .allEvents
     var isCreatingEvent: Bool = false
+    var selectedViewMode: ViewMode = .list
+    var selectedSortOption: SortOption = .date
     var isFilterSheetPresented: Bool = false
     var searchText: String = ""
-    var selectedSortOption: SortOption = .date
+
+    // Firestore query predicates
+    var subsectionPredicates: [QueryPredicate] = []
+    var filterPredicates: [QueryPredicate] = []
+    var datePredicates: [QueryPredicate] = []
+    var allPredicates: [QueryPredicate] {
+        return AppModel.baseExplorePredicates + subsectionPredicates + filterPredicates + datePredicates
+    }
 
     // Calendar
     var visibleMonth: DateComponents = Calendar.current.dateComponents([.year, .month], from: .now)
@@ -53,11 +51,11 @@ class ExploreViewModel {
     func sortEvents() {
         switch selectedSortOption {
         case .date:
-            basePredicates[0] = .orderBy("date", false)
+            AppModel.baseExplorePredicates[1] = .orderBy("date", false)
         case .categoryAZ:
-            basePredicates[0] = .orderBy("categoryName", false)
+            AppModel.baseExplorePredicates[1] = .orderBy("categoryName", false)
         case .categoryZA:
-            basePredicates[0] = .orderBy("categoryName", true)
+            AppModel.baseExplorePredicates[1] = .orderBy("categoryName", true)
         }
     }
 

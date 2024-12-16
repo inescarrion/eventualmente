@@ -80,7 +80,7 @@ struct EventDetailView: View {
         .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                if vm.isAuthor, !vm.event.isPublic {
+                if vm.isAuthor || !vm.event.isPublic {
                     HStack {
                         Button {
                             isUpdateSheetPresented = true
@@ -91,6 +91,13 @@ struct EventDetailView: View {
                             isDeleteAlertPresented = true
                         } label: {
                             NavigationButtonLabel(icon: "trash", text: "Eliminar")
+                        }
+                        if vm.event.isPublic {
+                            Button {
+                                vm.updateFavourite()
+                            } label: {
+                                Image(systemName: vm.isFavourite ? "heart.fill" : "heart")
+                            }
                         }
                     }
                 } else {

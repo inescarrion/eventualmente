@@ -21,6 +21,11 @@ class AppModel {
     var selectedTab: Tab = .explore
     let database = Firestore.firestore()
     static var userId: String = ""
+    static var baseExplorePredicates: [QueryPredicate] = [
+        .where("groupId", isEqualTo: ""),
+        .orderBy("date", false),
+        .where("date", isGreaterThan: Timestamp(date: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!))
+    ]
 
     init() {
         registerAuthStateHandler()
