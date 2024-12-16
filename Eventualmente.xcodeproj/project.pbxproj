@@ -18,8 +18,11 @@
 		633688BC2D0F46C00081CA81 /* PrivateGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688BB2D0F46BE0081CA81 /* PrivateGroup.swift */; };
 		633688BE2D0F481A0081CA81 /* GroupsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */; };
 		633688C02D0F52DC0081CA81 /* GroupEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */; };
-		633688C52D0F68200081CA81 /* UIPasteboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688C42D0F68200081CA81 /* UIPasteboard+Extension.swift */; };
-		633688C72D0F8A0E0081CA81 /* CreateGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */; };
+		633688C72D0F8A0E0081CA81 /* GroupFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688C62D0F8A0E0081CA81 /* GroupFormView.swift */; };
+		633688CC2D0F8F310081CA81 /* GroupDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CB2D0F8F310081CA81 /* GroupDetailsView.swift */; };
+		633688CE2D0F90480081CA81 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CD2D0F903E0081CA81 /* UserData.swift */; };
+		633688D02D0F91AF0081CA81 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */; };
+		633688D42D1041E40081CA81 /* GroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688D32D1041E40081CA81 /* GroupFormViewModel.swift */; };
 		636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */; };
 		637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637349362D0C5756000FD3FE /* ExploreFiltersView.swift */; };
 		6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373493B2D0C67D8000FD3FE /* CategoryRow.swift */; };
@@ -80,8 +83,11 @@
 		633688BB2D0F46BE0081CA81 /* PrivateGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateGroup.swift; sourceTree = "<group>"; };
 		633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewModel.swift; sourceTree = "<group>"; };
 		633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventsView.swift; sourceTree = "<group>"; };
-		633688C42D0F68200081CA81 /* UIPasteboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPasteboard+Extension.swift"; sourceTree = "<group>"; };
-		633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupView.swift; sourceTree = "<group>"; };
+		633688C62D0F8A0E0081CA81 /* GroupFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormView.swift; sourceTree = "<group>"; };
+		633688CB2D0F8F310081CA81 /* GroupDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsView.swift; sourceTree = "<group>"; };
+		633688CD2D0F903E0081CA81 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
+		633688D32D1041E40081CA81 /* GroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewModel.swift; sourceTree = "<group>"; };
 		63394DC52CB5E0FE005517E8 /* Eventualmente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventualmente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DD52CB5E100005517E8 /* EventualmenteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DDF2CB5E100005517E8 /* EventualmenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,6 +173,7 @@
 		63339DCC2CFB8DED005302B8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				633688CD2D0F903E0081CA81 /* UserData.swift */,
 				633688BB2D0F46BE0081CA81 /* PrivateGroup.swift */,
 				63339DCD2CFB8DF8005302B8 /* Event.swift */,
 				63EA4E772CFC96DF00E9842A /* Category.swift */,
@@ -189,9 +196,28 @@
 				633688B92D0F460E0081CA81 /* GroupsView.swift */,
 				633688BD2D0F481A0081CA81 /* GroupsViewModel.swift */,
 				633688BF2D0F52DC0081CA81 /* GroupEventsView.swift */,
-				633688C62D0F8A0E0081CA81 /* CreateGroupView.swift */,
+				633688D22D1041CA0081CA81 /* GroupForm */,
+				633688D12D0FA3960081CA81 /* GroupDetails */,
 			);
 			path = Groups;
+			sourceTree = "<group>";
+		};
+		633688D12D0FA3960081CA81 /* GroupDetails */ = {
+			isa = PBXGroup;
+			children = (
+				633688CB2D0F8F310081CA81 /* GroupDetailsView.swift */,
+				633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */,
+			);
+			path = GroupDetails;
+			sourceTree = "<group>";
+		};
+		633688D22D1041CA0081CA81 /* GroupForm */ = {
+			isa = PBXGroup;
+			children = (
+				633688C62D0F8A0E0081CA81 /* GroupFormView.swift */,
+				633688D32D1041E40081CA81 /* GroupFormViewModel.swift */,
+			);
+			path = GroupForm;
 			sourceTree = "<group>";
 		};
 		63394DBC2CB5E0FE005517E8 = {
@@ -257,7 +283,6 @@
 				63DDB9572D0A514800C9189E /* Date+Extension.swift */,
 				63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */,
 				63AB4BCB2CF0F48800CD923C /* String+Extension.swift */,
-				633688C42D0F68200081CA81 /* UIPasteboard+Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -505,13 +530,13 @@
 			files = (
 				63339DCB2CFB8A93005302B8 /* EventListItem.swift in Sources */,
 				63AB4BCC2CF0F48800CD923C /* String+Extension.swift in Sources */,
-				633688C52D0F68200081CA81 /* UIPasteboard+Extension.swift in Sources */,
 				633688BA2D0F460E0081CA81 /* GroupsView.swift in Sources */,
 				63EAFD712CED3D5D006349CB /* Font+Extensions.swift in Sources */,
 				63AB4BCF2CF0FC8F00CD923C /* CustomButtons.swift in Sources */,
 				63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */,
 				633688A82D0D6F030081CA81 /* Chip.swift in Sources */,
 				63DDB9582D0A514E00C9189E /* Date+Extension.swift in Sources */,
+				633688D42D1041E40081CA81 /* GroupFormViewModel.swift in Sources */,
 				632EEA042D0B6FA900D12320 /* ExploreViewModel.swift in Sources */,
 				63DDB94B2D08405C00C9189E /* EventFormView.swift in Sources */,
 				63DDB94C2D08405C00C9189E /* EventDetailView.swift in Sources */,
@@ -519,13 +544,15 @@
 				63DDB94E2D08405C00C9189E /* AuthenticationView.swift in Sources */,
 				63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */,
 				633688BE2D0F481A0081CA81 /* GroupsViewModel.swift in Sources */,
-				633688C72D0F8A0E0081CA81 /* CreateGroupView.swift in Sources */,
+				633688C72D0F8A0E0081CA81 /* GroupFormView.swift in Sources */,
 				6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */,
 				639B558B2CEA8C470062F7CC /* ContentView.swift in Sources */,
 				63AB4BD32CF31F2900CD923C /* ErrorMessage.swift in Sources */,
 				63AB4BD12CF3184D00CD923C /* FieldModifier.swift in Sources */,
+				633688D02D0F91AF0081CA81 /* GroupDetailsViewModel.swift in Sources */,
 				633688C02D0F52DC0081CA81 /* GroupEventsView.swift in Sources */,
 				63AB4BD62CF327EE00CD923C /* AuthenticationViewModel.swift in Sources */,
+				633688CE2D0F90480081CA81 /* UserData.swift in Sources */,
 				637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */,
 				636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */,
 				639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */,
@@ -536,6 +563,7 @@
 				632EEA062D0B9A3600D12320 /* ExploreBottomToolbar.swift in Sources */,
 				63339DCE2CFB8DFC005302B8 /* Event.swift in Sources */,
 				633688AB2D0EED4C0081CA81 /* EventDetailViewModel.swift in Sources */,
+				633688CC2D0F8F310081CA81 /* GroupDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

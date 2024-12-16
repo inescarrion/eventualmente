@@ -7,7 +7,7 @@ struct EventFormView: View {
     @State private var vm: EventFormViewModel
     let isPublic: Bool
 
-    init(type: FormType, isPublic: Bool) {
+    init(type: EventFormType, isPublic: Bool) {
         vm = EventFormViewModel(type: type)
         self.isPublic = isPublic
     }

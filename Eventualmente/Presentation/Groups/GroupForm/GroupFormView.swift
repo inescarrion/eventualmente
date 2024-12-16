@@ -1,8 +1,12 @@
 import SwiftUI
 
-struct CreateGroupView: View {
+struct GroupFormView: View {
     @Environment(\.dismiss) var dismiss
-    @Environment(GroupsViewModel.self) var vm: GroupsViewModel
+    @State private var vm: GroupFormViewModel
+
+    init(type: GroupFormType) {
+        self.vm = GroupFormViewModel(type: type)
+    }
 
     var body: some View {
         @Bindable var vm = vm
@@ -10,15 +14,18 @@ struct CreateGroupView: View {
             List {
                 Section("Nombre del grupo") {
                     TextField("Introduce un nombre", text: $vm.newGroupName)
+                        .autocorrectionDisabled(true)
                 }
             }
-            .navigationTitle("Crear nuevo grupo")
+            .navigationTitle(vm.navigationTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Crear") {
-                        vm.createGroup()
-                        dismiss()
+                    Button(vm.confirmButtonText) {
+                        Task {
+                            await vm.createOrUpdateGroup()
+                            dismiss()
+                        }
                     }
                     .disabled(vm.newGroupName.isEmptyOrWhitespace)
                 }
@@ -29,5 +36,5 @@ struct CreateGroupView: View {
 }
 
 #Preview {
-    CreateGroupView()
+    GroupFormView(type: .create)
 }

@@ -2,7 +2,7 @@ import Foundation
 import FirebaseFirestore
 import OSLog
 
-enum FormType {
+enum EventFormType {
     case create(userId: String, groupId: String)
     case update(event: Event)
 }
@@ -21,7 +21,7 @@ class EventFormViewModel {
     var link: String = ""
     var moreInfo: String = ""
 
-    let type: FormType
+    let type: EventFormType
     var formTitle: String {
         switch type {
         case .create:
@@ -51,7 +51,7 @@ class EventFormViewModel {
         }
     }
 
-    init(type: FormType) {
+    init(type: EventFormType) {
         switch type {
         case .create(let userId, let groupId):
             self.userId = userId

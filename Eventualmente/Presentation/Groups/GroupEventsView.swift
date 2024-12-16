@@ -4,8 +4,12 @@ import FirebaseFirestore
 struct GroupEventsView: View {
     @Environment(AppModel.self) private var appModel
     @FirestoreQuery(collectionPath: "events") var groupEvents: [Event]
-    let group: PrivateGroup
+    @State private var group: PrivateGroup
     @State private var isCreatingEvent: Bool = false
+
+    init(group: PrivateGroup) {
+        _group = State(initialValue: group)
+    }
 
     var body: some View {
         List {
@@ -27,9 +31,7 @@ struct GroupEventsView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    // TODO
-                } label: {
+                NavigationLink(value: Path.groupDetails(group: $group)) {
                     NavigationButtonLabel(icon: "info.circle", text: "Detalles")
                 }
             }

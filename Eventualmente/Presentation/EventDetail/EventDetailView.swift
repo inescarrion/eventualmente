@@ -85,7 +85,7 @@ struct EventDetailView: View {
                         Button {
                             isUpdateSheetPresented = true
                         } label: {
-                            NavigationButtonLabel(icon: "pencil.line", text: "Editar")
+                            NavigationButtonLabel(icon: "pencil", text: "Editar")
                         }
                         Button {
                             isDeleteAlertPresented = true

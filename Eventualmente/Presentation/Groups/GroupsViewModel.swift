@@ -7,7 +7,6 @@ import OSLog
 @Observable
 class GroupsViewModel {
     var joinGroupId: String = ""
-    var newGroupName: String = ""
 
     func joinGroup() {
         Task {
@@ -19,17 +18,6 @@ class GroupsViewModel {
                 try Firestore.firestore().collection("groups").document(joinGroupId).setData(from: updatedGroup, merge: true)
             } catch {
                 Logger.global.error("Group joining failed: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    func createGroup() {
-        Task {
-            do {
-                let group = PrivateGroup(name: newGroupName, membersIds: [AppModel.userId])
-                try Firestore.firestore().collection("groups").document().setData(from: group)
-            } catch {
-                Logger.global.error("Group creation failed: \(error.localizedDescription)")
             }
         }
     }
