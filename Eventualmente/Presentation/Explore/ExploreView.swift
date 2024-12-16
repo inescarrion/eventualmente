@@ -8,11 +8,7 @@ struct ExploreView: View {
     @State private var vm = ExploreViewModel()
     @FirestoreQuery(
         collectionPath: "events",
-        predicates: [
-            .where("groupId", isEqualTo: ""),
-            .orderBy("date", false),
-            .where("date", isGreaterThan: Timestamp(date: Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!))
-        ]
+        predicates: AppModel.baseExplorePredicates
     ) var events: [Event]
 
     var body: some View {
@@ -26,9 +22,21 @@ struct ExploreView: View {
                         listModeView
                     case .calendar:
                         calendarModeView
+                            .onChange(of: vm.visibleMonth) { _, _ in
+                                vm.updateDatePredicates(selectedDate: nil)
+                                $events.predicates = vm.allPredicates
+                                vm.selectedDate = nil
+                            }
+                            .onChange(of: vm.selectedDate) { _, newDate in
+                                vm.updateDatePredicates(selectedDate: newDate)
+                                $events.predicates = vm.allPredicates
+                            }
                     }
                 }
                 .searchable(text: $vm.searchText, placement: .automatic, prompt: "Buscar")
+                .onChange(of: vm.searchText) { _, newValue in
+                    vm.eventsShown = newValue.isEmpty ? events : events.filter({ $0.title.localizedCaseInsensitiveContains(newValue) })
+                }
                 .toolbar {
                     ExploreNavigationBar(
                         sortMenuPicker: { sortPicker },
@@ -41,30 +49,18 @@ struct ExploreView: View {
                 .onChange(of: events) { _, newValue in
                     vm.eventsShown = newValue
                     applyLocationAndSubcategoryFilters()
-                    vm.addCalendarDecorations(events: events)
+                    vm.addCalendarDecorations(events: vm.eventsShown)
                 }
-                .onChange(of: vm.selectedSortOption) {
-                    vm.sortEvents()
+                .onChange(of: vm.selectedSubsection) { _, _ in
                     $events.predicates = vm.allPredicates
                 }
                 .onChange(of: vm.selectedViewMode) { _, newValue in
                     vm.updateViewMode(viewMode: newValue)
                     $events.predicates = vm.allPredicates
                 }
-                .onChange(of: vm.selectedSubsection) { _, _ in
+                .onChange(of: vm.selectedSortOption) {
+                    vm.sortEvents()
                     $events.predicates = vm.allPredicates
-                }
-                .onChange(of: vm.visibleMonth) { _, _ in
-                    vm.updateDatePredicates(selectedDate: nil)
-                    $events.predicates = vm.allPredicates
-                    vm.selectedDate = nil
-                }
-                .onChange(of: vm.selectedDate) { _, newDate in
-                    vm.updateDatePredicates(selectedDate: newDate)
-                    $events.predicates = vm.allPredicates
-                }
-                .onChange(of: vm.searchText) { _, newValue in
-                    vm.eventsShown = newValue.isEmpty ? events : events.filter({ $0.title.localizedCaseInsensitiveContains(newValue) })
                 }
                 .onChange(of: vm.areFiltersApplied) { _, newValue in
                     if !newValue {
