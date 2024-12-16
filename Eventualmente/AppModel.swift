@@ -6,14 +6,6 @@ enum AppState: Equatable {
     case loading
     case unauthenticated
     case authenticated(user: User)
-
-    var userId: String {
-        switch self {
-        case .loading: return ""
-        case .unauthenticated: return ""
-        case .authenticated(user: let user): return user.uid
-        }
-    }
 }
 
 enum Tab: Equatable {
@@ -28,6 +20,7 @@ class AppModel {
     var state: AppState = .loading
     var selectedTab: Tab = .explore
     let database = Firestore.firestore()
+    static var userId: String = ""
 
     init() {
         registerAuthStateHandler()
@@ -44,6 +37,7 @@ class AppModel {
         if authStateHandle == nil {
             authStateHandle = Auth.auth().addStateDidChangeListener { _, user in
                 self.state = user == nil ? .unauthenticated : .authenticated(user: user!)
+                AppModel.userId = user?.uid ?? ""
             }
         }
     }

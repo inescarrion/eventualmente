@@ -2,7 +2,7 @@ import Foundation
 import FirebaseFirestore
 import OSLog
 
-enum FormType {
+enum EventFormType {
     case create(userId: String, groupId: String)
     case update(event: Event)
 }
@@ -21,7 +21,7 @@ class EventFormViewModel {
     var link: String = ""
     var moreInfo: String = ""
 
-    let type: FormType
+    let type: EventFormType
     var formTitle: String {
         switch type {
         case .create:
@@ -40,18 +40,18 @@ class EventFormViewModel {
     }
 
     var isFormValid: Bool {
-        if !userId.isEmpty {
+        if !groupId.isEmpty {
+            return !title.isEmptyOrWhitespace && selectedDate > .now
+        } else if !userId.isEmpty {
             return !title.isEmptyOrWhitespace && !selectedCategory.name.isEmptyOrWhitespace && !location.isEmptyOrWhitespace && selectedDate > .now
                 && (!link.isEmptyOrWhitespace || !moreInfo.isEmptyOrWhitespace)
-        } else if !groupId.isEmpty {
-            return !title.isEmptyOrWhitespace && selectedDate > .now
         } else {
             Logger.global.error("UserId and groupId are empty")
             return false
         }
     }
 
-    init(type: FormType) {
+    init(type: EventFormType) {
         switch type {
         case .create(let userId, let groupId):
             self.userId = userId
@@ -82,7 +82,7 @@ class EventFormViewModel {
             do {
                 try Firestore.firestore().collection("events").document().setData(from: event, merge: false)
             } catch {
-                Logger.global.error("Error creating event: \(error)")
+                Logger.global.error("Error creating event: \(error.localizedDescription)")
             }
         case .update(let event):
             guard let id = event.id else { return }
@@ -101,7 +101,7 @@ class EventFormViewModel {
             do {
                 try Firestore.firestore().collection("events").document(id).setData(from: updatedEvent, merge: true)
             } catch {
-                Logger.global.error("Error updating event: \(error)")
+                Logger.global.error("Error updating event: \(error.localizedDescription)")
             }
         }
     }
