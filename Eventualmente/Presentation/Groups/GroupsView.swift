@@ -64,6 +64,7 @@ struct GroupsView: View {
             }
             .alert("Introduce el código de invitación", isPresented: $isJoinGroupAlertPresented) {
                 TextField("Pega aquí el código", text: $vm.joinGroupId)
+                    .autocorrectionDisabled(true)
                 Button("Validar") {
                     vm.joinGroup()
                 }

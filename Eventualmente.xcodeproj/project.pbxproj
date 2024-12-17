@@ -23,6 +23,10 @@
 		633688CE2D0F90480081CA81 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CD2D0F903E0081CA81 /* UserData.swift */; };
 		633688D02D0F91AF0081CA81 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */; };
 		633688D42D1041E40081CA81 /* GroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688D32D1041E40081CA81 /* GroupFormViewModel.swift */; };
+		633688E32D10F14F0081CA81 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E22D10F14F0081CA81 /* MyAccountView.swift */; };
+		633688E52D10F2820081CA81 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E42D10F2820081CA81 /* MyAccountViewModel.swift */; };
+		633688E72D10FB310081CA81 /* UserDataFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E62D10FB310081CA81 /* UserDataFormView.swift */; };
+		633688E92D1103FD0081CA81 /* UserDataFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */; };
 		636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */; };
 		637349372D0C5756000FD3FE /* ExploreFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 637349362D0C5756000FD3FE /* ExploreFiltersView.swift */; };
 		6373493C2D0C67D8000FD3FE /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373493B2D0C67D8000FD3FE /* CategoryRow.swift */; };
@@ -39,6 +43,7 @@
 		63AB4BD82CF32E0500CD923C /* Logger+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */; };
 		63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63AB4BDB2CF390DB00CD923C /* AppModel.swift */; };
 		63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B8725A2CFFBEDB003A6906 /* NoResults.swift */; };
+		63BE7DFF2D118B45006557DF /* ListRowWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63BE7DFE2D118B45006557DF /* ListRowWithButton.swift */; };
 		63CE8B362CE53E630089BC39 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B352CE53E630089BC39 /* FirebaseAuth */; };
 		63CE8B382CE53E630089BC39 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63CE8B372CE53E630089BC39 /* FirebaseFirestore */; };
 		63DDB94B2D08405C00C9189E /* EventFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DDB9472D08405C00C9189E /* EventFormView.swift */; };
@@ -88,6 +93,10 @@
 		633688CD2D0F903E0081CA81 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		633688D32D1041E40081CA81 /* GroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewModel.swift; sourceTree = "<group>"; };
+		633688E22D10F14F0081CA81 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
+		633688E42D10F2820081CA81 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
+		633688E62D10FB310081CA81 /* UserDataFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFormView.swift; sourceTree = "<group>"; };
+		633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFormViewModel.swift; sourceTree = "<group>"; };
 		63394DC52CB5E0FE005517E8 /* Eventualmente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventualmente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DD52CB5E100005517E8 /* EventualmenteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63394DDF2CB5E100005517E8 /* EventualmenteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventualmenteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +116,7 @@
 		63AB4BD72CF32DFC00CD923C /* Logger+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Logger+Extension.swift"; sourceTree = "<group>"; };
 		63AB4BDB2CF390DB00CD923C /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		63B8725A2CFFBEDB003A6906 /* NoResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResults.swift; sourceTree = "<group>"; };
+		63BE7DFE2D118B45006557DF /* ListRowWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRowWithButton.swift; sourceTree = "<group>"; };
 		63DDB9462D08405C00C9189E /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		63DDB9472D08405C00C9189E /* EventFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormView.swift; sourceTree = "<group>"; };
 		63DDB9482D08405C00C9189E /* EventDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailView.swift; sourceTree = "<group>"; };
@@ -220,6 +230,17 @@
 			path = GroupForm;
 			sourceTree = "<group>";
 		};
+		633688E12D10F1340081CA81 /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				633688E22D10F14F0081CA81 /* MyAccountView.swift */,
+				633688E42D10F2820081CA81 /* MyAccountViewModel.swift */,
+				633688E62D10FB310081CA81 /* UserDataFormView.swift */,
+				633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */,
+			);
+			path = MyAccount;
+			sourceTree = "<group>";
+		};
 		63394DBC2CB5E0FE005517E8 = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +317,7 @@
 				63339DCA2CFB8A93005302B8 /* EventListItem.swift */,
 				63B8725A2CFFBEDB003A6906 /* NoResults.swift */,
 				633688A72D0D6F030081CA81 /* Chip.swift */,
+				63BE7DFE2D118B45006557DF /* ListRowWithButton.swift */,
 			);
 			path = DesignComponents;
 			sourceTree = "<group>";
@@ -308,6 +330,7 @@
 				633688A92D0EED0D0081CA81 /* EventDetail */,
 				632EEA072D0BA85E00D12320 /* EventForm */,
 				633688B82D0F45E30081CA81 /* Groups */,
+				633688E12D10F1340081CA81 /* MyAccount */,
 			);
 			name = Presentation;
 			path = Eventualmente/Presentation;
@@ -535,12 +558,16 @@
 				63AB4BCF2CF0FC8F00CD923C /* CustomButtons.swift in Sources */,
 				63AB4BDC2CF390DD00CD923C /* AppModel.swift in Sources */,
 				633688A82D0D6F030081CA81 /* Chip.swift in Sources */,
+				633688E92D1103FD0081CA81 /* UserDataFormViewModel.swift in Sources */,
 				63DDB9582D0A514E00C9189E /* Date+Extension.swift in Sources */,
 				633688D42D1041E40081CA81 /* GroupFormViewModel.swift in Sources */,
 				632EEA042D0B6FA900D12320 /* ExploreViewModel.swift in Sources */,
 				63DDB94B2D08405C00C9189E /* EventFormView.swift in Sources */,
 				63DDB94C2D08405C00C9189E /* EventDetailView.swift in Sources */,
+				633688E52D10F2820081CA81 /* MyAccountViewModel.swift in Sources */,
+				63BE7DFF2D118B45006557DF /* ListRowWithButton.swift in Sources */,
 				63DDB94D2D08405C00C9189E /* ExploreView.swift in Sources */,
+				633688E32D10F14F0081CA81 /* MyAccountView.swift in Sources */,
 				63DDB94E2D08405C00C9189E /* AuthenticationView.swift in Sources */,
 				63B8725B2CFFBEDB003A6906 /* NoResults.swift in Sources */,
 				633688BE2D0F481A0081CA81 /* GroupsViewModel.swift in Sources */,
@@ -558,6 +585,7 @@
 				639B558C2CEA8C470062F7CC /* EventualmenteApp.swift in Sources */,
 				633688BC2D0F46C00081CA81 /* PrivateGroup.swift in Sources */,
 				63EA4E782CFC96DF00E9842A /* Category.swift in Sources */,
+				633688E72D10FB310081CA81 /* UserDataFormView.swift in Sources */,
 				632EEA092D0BA89B00D12320 /* EventFormViewModel.swift in Sources */,
 				63AB4BD82CF32E0500CD923C /* Logger+Extension.swift in Sources */,
 				632EEA062D0B9A3600D12320 /* ExploreBottomToolbar.swift in Sources */,

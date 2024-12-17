@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GroupDetailsView: View {
-    @State var vm: GroupDetailsViewModel
+    @State private var vm: GroupDetailsViewModel
     @Binding var path: [Path]
     @Binding var group: PrivateGroup
     @State private var isUpdateGroupSheetPresented: Bool = false
@@ -19,14 +19,8 @@ struct GroupDetailsView: View {
     var body: some View {
         List {
             Section("Nombre del grupo") {
-                HStack {
-                    Text(group.name)
-                    Spacer()
-                    Button {
-                        isUpdateGroupSheetPresented = true
-                    } label: {
-                        Image(systemName: "pencil")
-                    }
+                ListRowWithButton(text: group.name) {
+                    isUpdateGroupSheetPresented = true
                 }
             }
 

@@ -17,6 +17,7 @@ struct EventFormView: View {
             List {
                 Section("Título") {
                     TextField("Introduce un título descriptivo", text: $vm.title)
+                        .autocorrectionDisabled(true)
                 }
 
                 Section("Categoría\(isPublic ? "" : " (OPCIONAL)")") {
@@ -39,6 +40,7 @@ struct EventFormView: View {
                         .textInputAutocapitalization(.never)
                     TextField("Descripción del evento o cualquier información relevante", text: $vm.moreInfo, axis: .vertical)
                         .lineLimit(4...)
+                        .autocorrectionDisabled(true)
                 }
             }
             .toolbar {
