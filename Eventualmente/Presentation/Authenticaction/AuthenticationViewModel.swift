@@ -1,5 +1,6 @@
 import Foundation
 import OSLog
+import FirebaseFirestore
 @preconcurrency import FirebaseAuth
 
 enum AuthFlow {
@@ -58,6 +59,10 @@ extension AuthenticationViewModel {
                 } else {
                     Task {
                         try await Auth.auth().currentUser?.reload()
+                        if let user = Auth.auth().currentUser {
+                            let userData = UserData(name: user.displayName!, email: user.email!)
+                            try Firestore.firestore().collection("users").document(authResult.user.uid).setData(from: userData, merge: false)
+                        }
                     }
                 }
             }
