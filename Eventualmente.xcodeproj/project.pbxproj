@@ -24,7 +24,6 @@
 		633688D02D0F91AF0081CA81 /* GroupDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */; };
 		633688D42D1041E40081CA81 /* GroupFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688D32D1041E40081CA81 /* GroupFormViewModel.swift */; };
 		633688E32D10F14F0081CA81 /* MyAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E22D10F14F0081CA81 /* MyAccountView.swift */; };
-		633688E52D10F2820081CA81 /* MyAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E42D10F2820081CA81 /* MyAccountViewModel.swift */; };
 		633688E72D10FB310081CA81 /* UserDataFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E62D10FB310081CA81 /* UserDataFormView.swift */; };
 		633688E92D1103FD0081CA81 /* UserDataFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */; };
 		636E0ECB2CFE2061005F6779 /* ExploreNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0ECA2CFE205D005F6779 /* ExploreNavigationBar.swift */; };
@@ -94,7 +93,6 @@
 		633688CF2D0F91AF0081CA81 /* GroupDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailsViewModel.swift; sourceTree = "<group>"; };
 		633688D32D1041E40081CA81 /* GroupFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupFormViewModel.swift; sourceTree = "<group>"; };
 		633688E22D10F14F0081CA81 /* MyAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountView.swift; sourceTree = "<group>"; };
-		633688E42D10F2820081CA81 /* MyAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewModel.swift; sourceTree = "<group>"; };
 		633688E62D10FB310081CA81 /* UserDataFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFormView.swift; sourceTree = "<group>"; };
 		633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFormViewModel.swift; sourceTree = "<group>"; };
 		63394DC52CB5E0FE005517E8 /* Eventualmente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventualmente.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,7 +232,6 @@
 			isa = PBXGroup;
 			children = (
 				633688E22D10F14F0081CA81 /* MyAccountView.swift */,
-				633688E42D10F2820081CA81 /* MyAccountViewModel.swift */,
 				633688E62D10FB310081CA81 /* UserDataFormView.swift */,
 				633688E82D1103FD0081CA81 /* UserDataFormViewModel.swift */,
 			);
@@ -564,7 +561,6 @@
 				632EEA042D0B6FA900D12320 /* ExploreViewModel.swift in Sources */,
 				63DDB94B2D08405C00C9189E /* EventFormView.swift in Sources */,
 				63DDB94C2D08405C00C9189E /* EventDetailView.swift in Sources */,
-				633688E52D10F2820081CA81 /* MyAccountViewModel.swift in Sources */,
 				63BE7DFF2D118B45006557DF /* ListRowWithButton.swift in Sources */,
 				63DDB94D2D08405C00C9189E /* ExploreView.swift in Sources */,
 				633688E32D10F14F0081CA81 /* MyAccountView.swift in Sources */,

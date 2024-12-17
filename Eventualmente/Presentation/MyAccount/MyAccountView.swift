@@ -1,8 +1,8 @@
 import SwiftUI
 @preconcurrency import FirebaseAuth
+import OSLog
 
 struct MyAccountView: View {
-    @State private var vm = MyAccountViewModel()
     @State private var isShowingUpdateSheet: Bool = false
     @State private var selectedField: SelectedField?
     @State private var currentUserName = Auth.auth().currentUser?.displayName
@@ -40,7 +40,7 @@ struct MyAccountView: View {
                 }
 
                 Button("Cerrar sesión") {
-                    vm.logOut()
+                    logOut()
                 }
             }
             .toolbar {
@@ -52,14 +52,28 @@ struct MyAccountView: View {
             }
             .toolbarBackground(.visible, for: .navigationBar)
             .sheet(item: $selectedField) {
-                Task {
-                    try? await Auth.auth().currentUser?.reload()
-                    self.currentUserName = Auth.auth().currentUser?.displayName
-                }
+                fetchUpdatedUserName()
             } content: { selectedField in
                 UserDataFormView(selectedField: selectedField)
                     .presentationDetents([.medium])
             }
+        }
+    }
+}
+
+private extension MyAccountView {
+    func logOut() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            Logger.global.error("\(error.localizedDescription)")
+        }
+    }
+
+    func fetchUpdatedUserName() {
+        Task {
+            try? await Auth.auth().currentUser?.reload()
+            self.currentUserName = Auth.auth().currentUser?.displayName
         }
     }
 }
