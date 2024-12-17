@@ -23,6 +23,7 @@ struct ExploreFiltersView: View {
             Section("Ubicación") {
                 TextField("Nombre de la ciudad o pueblo", text: $vm.location)
                     .lineLimit(1)
+                    .autocorrectionDisabled(true)
             }
         }
         .toolbar {

@@ -50,6 +50,10 @@ private extension AuthenticationView {
                 Text(authVM.authFlow == .createAccount ? "Crear \ncuenta".coloredFirstLetter : "Iniciar \nsesión".coloredFirstLetter)
                     .font(.customLargeTitle)
                     .fixedSize()
+                if authVM.authFlow == .createAccount {
+                    TextField("Nombre", text: $authVM.name)
+                        .customField()
+                }
                 TextField("Correo electrónico", text: $authVM.email)
                     .customField()
                 SecureField("Contraseña", text: $authVM.password)

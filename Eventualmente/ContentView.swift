@@ -38,18 +38,11 @@ extension ContentView {
                     }
                     .tag(Tab.groups)
                     .environment(appModel)
-                List {
-                    Section("Correo electrónico") {
-                        Text(user.email!)
+                MyAccountView()
+                    .tabItem {
+                        Label("Mi cuenta", systemImage: "person.crop.circle")
                     }
-                    Button("Cerrar sesión") {
-                        authenticationViewModel.logOut()
-                    }
-                }
-                .tabItem {
-                    Label("Mi cuenta", systemImage: "person.crop.circle")
-                }
-                .tag(Tab.myAccount)
+                    .tag(Tab.myAccount)
             }
             .toolbarBackground(.visible, for: .tabBar)
         }

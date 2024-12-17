@@ -15,16 +15,17 @@ class AuthenticationViewModel {
         category: String(describing: AuthenticationViewModel.self)
     )
 
+    var name: String = ""
     var email: String = ""
     var password: String = ""
     var passwordConfirmation: String = ""
 
-    var authFlow: AuthFlow = .createAccount
+    var authFlow: AuthFlow = .logIn
     var areFieldsEmpty: Bool {
         if authFlow == .createAccount {
-            email.isEmpty || password.isEmpty || passwordConfirmation.isEmpty
+            name.isEmptyOrWhitespace || email.isEmptyOrWhitespace || password.isEmptyOrWhitespace || passwordConfirmation.isEmptyOrWhitespace
         } else {
-            email.isEmpty || password.isEmpty
+            email.isEmptyOrWhitespace || password.isEmptyOrWhitespace
         }
     }
     var errorMessage: String = ""
@@ -49,6 +50,11 @@ extension AuthenticationViewModel {
         do {
             let authResult = try await Auth.auth().createUser(withEmail: email.trimmingCharacters(in: .whitespacesAndNewlines), password: password)
             logger.info("User \(authResult.user.uid) created successfully")
+            let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+            changeRequest?.displayName = name
+            changeRequest?.commitChanges { error in
+                self.logger.error("Error setting user name: \(error?.localizedDescription ?? "")")
+            }
             return true
         } catch {
             if let error = error as NSError? {
@@ -84,7 +90,8 @@ extension AuthenticationViewModel {
                 case .invalidEmail:
                     errorMessage = "La dirección de correo no es válida"
                 case .userNotFound:
-                    errorMessage = "No existe ningún usuario con el correo electrónico introducido"
+                    // swiftlint:disable:next line_length
+                    errorMessage = "No existe ningún usuario con el correo electrónico introducido. Si lo has cambiado recientemente, te llegará un correo a la nueva dirección para verificarla"
                 case .wrongPassword:
                     errorMessage = "La contraseña no es correcta"
                 case .networkError:
@@ -97,14 +104,6 @@ extension AuthenticationViewModel {
             }
             logger.error("\(error.localizedDescription)")
             return false
-        }
-    }
-
-    func logOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch {
-            logger.error("\(error.localizedDescription)")
         }
     }
 }
