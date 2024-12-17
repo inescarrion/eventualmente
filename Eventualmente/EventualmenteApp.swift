@@ -29,6 +29,8 @@ struct EventualmenteApp: App {
             [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 17)], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes(
             [.foregroundColor: UIColor.black, .font: UIFont.boldSystemFont(ofSize: 17)], for: .normal)
+
+        
     }
 
     var body: some Scene {

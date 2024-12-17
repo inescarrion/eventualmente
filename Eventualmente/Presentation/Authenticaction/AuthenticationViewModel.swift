@@ -53,7 +53,13 @@ extension AuthenticationViewModel {
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = name
             changeRequest?.commitChanges { error in
-                self.logger.error("Error setting user name: \(error?.localizedDescription ?? "")")
+                if let error {
+                    self.logger.error("Error setting user name: \(error.localizedDescription)")
+                } else {
+                    Task {
+                        try await Auth.auth().currentUser?.reload()
+                    }
+                }
             }
             return true
         } catch {

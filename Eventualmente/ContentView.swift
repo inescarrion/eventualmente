@@ -15,6 +15,9 @@ struct ContentView: View {
                     .environment(authenticationViewModel)
             case .authenticated(let user):
                 tabView(user: user)
+                    .onAppear {
+                        appModel.selectedTab = .explore
+                    }
             }
         }
         .animation(.easeInOut, value: appModel.state)

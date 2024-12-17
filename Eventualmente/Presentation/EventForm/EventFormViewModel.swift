@@ -40,14 +40,15 @@ class EventFormViewModel {
     }
 
     var isFormValid: Bool {
+        guard !userId.isEmpty else { fatalError("userId must not be empty")}
+
         if !groupId.isEmpty {
+            // Private event
             return !title.isEmptyOrWhitespace && selectedDate > .now
-        } else if !userId.isEmpty {
-            return !title.isEmptyOrWhitespace && !selectedCategory.name.isEmptyOrWhitespace && !location.isEmptyOrWhitespace && selectedDate > .now
-                && (!link.isEmptyOrWhitespace || !moreInfo.isEmptyOrWhitespace)
         } else {
-            Logger.global.error("UserId and groupId are empty")
-            return false
+            // Public event
+            return !title.isEmptyOrWhitespace && !selectedCategory.name.isEmptyOrWhitespace && !location.isEmptyOrWhitespace && selectedDate > .now
+            && (!link.isEmptyOrWhitespace || !moreInfo.isEmptyOrWhitespace)
         }
     }
 

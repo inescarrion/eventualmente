@@ -54,8 +54,8 @@ struct ExploreView: View {
                 .onChange(of: vm.selectedSubsection) { _, _ in
                     $events.predicates = vm.allPredicates
                 }
-                .onChange(of: vm.selectedViewMode) { _, newValue in
-                    vm.updateViewMode(viewMode: newValue)
+                .onChange(of: vm.selectedViewMode) { _, _ in
+                    vm.updateViewMode()
                     $events.predicates = vm.allPredicates
                 }
                 .onChange(of: vm.selectedSortOption) {

@@ -37,6 +37,7 @@ struct MyAccountView: View {
                     Text("Ilustración de la página \"No se ha encontrado ningún evento, prueba a crear uno.\" diseñada por [storyset](https://www.freepik.com/free-vector/curious-concept-illustration_10840797.htm#fromView=search&page=1&position=19&uuid=d493423b-688b-495d-8714-850c2e38622b)")
                     Text("Vista de calendario: [CalendarView](https://github.com/AllanJuenemann/CalendarView) de Allan Juenemann")
                     Text("Autenticación y base de datos: [Google Firebase](https://firebase.google.com/)")
+                    Text("Fuente del logo y los títulos principales: [Averia Sans Libre](https://fonts.google.com/specimen/Averia+Sans+Libre)")
                 }
 
                 Button("Cerrar sesión") {
