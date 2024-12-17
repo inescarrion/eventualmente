@@ -33,8 +33,8 @@ class ExploreViewModel {
         var count: Int = 0
         count += selectedCategoriesNames.count
         count += selectedSubcategories.count
-        count += startDate.startOfTheDay == .now.startOfTheDay ? 0 : 1
-        count += endDate.startOfTheDay == .now.startOfTheDay ? 0 : 1
+        count += startDate < .now ? 0 : 1
+        count += isEndDateSelected ? 1 : 0
         count += location.isEmpty ? 0 : 1
         return count
     }
@@ -59,8 +59,8 @@ class ExploreViewModel {
         }
     }
 
-    func updateViewMode(viewMode: ViewMode) {
-        switch viewMode {
+    func updateViewMode() {
+        switch selectedViewMode {
         case .list:
             datePredicates = []
             selectedDate = nil
