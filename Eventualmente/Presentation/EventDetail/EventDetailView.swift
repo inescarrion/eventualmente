@@ -11,13 +11,55 @@ struct EventDetailView: View {
     }
 
     var body: some View {
-        List {
-            if !vm.event.categoryName.isEmpty {
-                Section("CATEGORÍA Y SUBCATEGORÍA") {
-                    HStack(spacing: 14) {
-                        Chip(text: vm.event.categoryName, symbolName: vm.event.categorySymbol, style: .primary)
-                        if !vm.event.subcategoryName.isEmpty {
-                            Chip(text: vm.event.subcategoryName, symbolName: vm.event.categorySymbol, style: .secondary)
+        VStack(spacing: 0) {
+            HStack {
+                Text(vm.event.title)
+                    .font(.title)
+                    .bold()
+                    .padding(.horizontal, 20)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.leading)
+                Spacer()
+            }
+            List {
+                if !vm.event.categoryName.isEmpty {
+                    Section("CATEGORÍA Y SUBCATEGORÍA") {
+                        HStack(spacing: 14) {
+                            Chip(text: vm.event.categoryName, symbolName: vm.event.categorySymbol, style: .primary)
+                            if !vm.event.subcategoryName.isEmpty {
+                                Chip(text: vm.event.subcategoryName, symbolName: vm.event.categorySymbol, style: .secondary)
+                            }
+                        }
+                    }
+                    .listRowSeparator(.hidden, edges: .bottom)
+                    .alignmentGuide(.listRowSeparatorLeading) { _ in
+                        return 0
+                    }
+                }
+
+                if !vm.event.location.isEmpty {
+                    Section("UBICACIÓN") {
+                        HStack(spacing: 4) {
+                            Image(systemName: "mappin.and.ellipse")
+                            Text(vm.event.location)
+                        }
+                    }
+                    .listRowSeparator(.hidden, edges: .bottom)
+                    .alignmentGuide(.listRowSeparatorLeading) { _ in
+                        return 0
+                    }
+                }
+
+                Section("FECHA Y HORA") {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack(spacing: 4) {
+                            Image(systemName: "calendar")
+                            Text(vm.event.date.dateValue().formatted(date: .numeric, time: .omitted))
+                        }
+
+                        HStack(spacing: 4) {
+                            Image(systemName: "clock")
+                            Text(vm.event.date.dateValue().formatted(date: .omitted, time: .shortened))
                         }
                     }
                 }
@@ -25,59 +67,26 @@ struct EventDetailView: View {
                 .alignmentGuide(.listRowSeparatorLeading) { _ in
                     return 0
                 }
-            }
 
-            if !vm.event.location.isEmpty {
-                Section("UBICACIÓN") {
-                    HStack(spacing: 4) {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text(vm.event.location)
+                if !vm.event.link.isEmpty {
+                    Section("ENLACE") {
+                        Link(vm.event.link, destination: URL(string: vm.event.link)!)
+                            .foregroundStyle(.accent)
+                            .underline()
                     }
+                    .listRowSeparator(.hidden, edges: .bottom)
                 }
-                .listRowSeparator(.hidden, edges: .bottom)
-                .alignmentGuide(.listRowSeparatorLeading) { _ in
-                    return 0
-                }
-            }
 
-            Section("FECHA Y HORA") {
-                VStack(alignment: .leading, spacing: 12) {
-                    HStack(spacing: 4) {
-                        Image(systemName: "calendar")
-                        Text(vm.event.date.dateValue().formatted(date: .numeric, time: .omitted))
+                if !vm.event.moreInfo.isEmpty {
+                    Section("MÁS INFORMACIÓN") {
+                        Text(vm.event.moreInfo)
+                            .multilineTextAlignment(.leading)
                     }
-
-                    HStack(spacing: 4) {
-                        Image(systemName: "clock")
-                        Text(vm.event.date.dateValue().formatted(date: .omitted, time: .shortened))
-                    }
+                    .listRowSeparator(.hidden, edges: .bottom)
                 }
             }
-            .listRowSeparator(.hidden, edges: .bottom)
-            .alignmentGuide(.listRowSeparatorLeading) { _ in
-                return 0
-            }
-
-            if !vm.event.link.isEmpty {
-                Section("ENLACE") {
-                    Link(vm.event.link, destination: URL(string: vm.event.link)!)
-                        .foregroundStyle(.accent)
-                        .underline()
-                }
-                .listRowSeparator(.hidden, edges: .bottom)
-            }
-
-            if !vm.event.moreInfo.isEmpty {
-                Section("MÁS INFORMACIÓN") {
-                    Text(vm.event.moreInfo)
-                        .multilineTextAlignment(.leading)
-                }
-                .listRowSeparator(.hidden, edges: .bottom)
-            }
+            .listStyle(.plain)
         }
-        .navigationTitle(vm.event.title)
-        .navigationBarTitleDisplayMode(.large)
-        .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 if vm.isAuthor || !vm.event.isPublic {
