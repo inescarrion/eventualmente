@@ -60,7 +60,7 @@ extension AuthenticationViewModel {
                     Task {
                         try await Auth.auth().currentUser?.reload()
                         if let user = Auth.auth().currentUser {
-                            let userData = UserData(name: user.displayName!, email: user.email!)
+                            let userData = UserData(name: user.displayName!)
                             try Firestore.firestore().collection("users").document(authResult.user.uid).setData(from: userData, merge: false)
                         }
                     }
