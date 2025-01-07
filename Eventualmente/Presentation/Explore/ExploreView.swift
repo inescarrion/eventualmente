@@ -181,7 +181,10 @@ extension ExploreView {
                 vm.eventsShown = events.filter({ $0.location.localizedCaseInsensitiveContains(vm.location) })
             }
             if !vm.selectedSubcategories.isEmpty {
-                vm.eventsShown = events.filter({ vm.selectedSubcategories.contains($0.subcategoryName) })
+                vm.eventsShown = events.filter({
+                    vm.selectedSubcategories.contains($0.subcategoryName) ||
+                    !vm.categoriesWithSelectedSubcategories.contains($0.categoryName)
+                })
             }
         }
     }

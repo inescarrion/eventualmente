@@ -49,7 +49,7 @@ struct ExploreFiltersView: View {
             if vm.categoriesListRows.isEmpty {
                 for category in newValue {
                     vm.categoriesListRows.append(
-                        CategoryRow(isSelected: false, name: category.name, isSubcategory: false, subcategories: category.subcategories)
+                        CategoryRow(isSelected: false, name: category.name, parentName: nil, subcategories: category.subcategories)
                     )
                 }
             }
@@ -90,7 +90,7 @@ extension ExploreFiltersView {
                                 .init(
                                     isSelected: isSelected,
                                     name: subcategory,
-                                    isSubcategory: true,
+                                    parentName: categoryRow.name,
                                     subcategories: []
                                 ),
                                 at: index)
@@ -112,6 +112,8 @@ extension ExploreFiltersView {
                 if categoryRow.isSelected {
                     if categoryRow.isSubcategory {
                         vm.selectedSubcategories.insert(categoryRow.name)
+                        vm.categoriesWithSelectedSubcategories.insert(categoryRow.parentName!)
+                        vm.selectedCategoriesNames.insert(categoryRow.parentName!)
                     } else {
                         vm.selectedCategoriesNames.insert(categoryRow.name)
                     }
