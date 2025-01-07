@@ -4,6 +4,9 @@ struct CategoryRow: Hashable {
     var isSelected: Bool
     var isExpanded: Bool = false
     let name: String
-    let isSubcategory: Bool
+    let parentName: String?
+    var isSubcategory: Bool {
+        parentName != nil
+    }
     let subcategories: [String]
 }

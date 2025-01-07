@@ -40,6 +40,7 @@ class ExploreViewModel {
     }
     var categoriesListRows: [CategoryRow] = []
     var selectedCategoriesNames: Set<String> = []
+    var categoriesWithSelectedSubcategories: Set<String> = []
     var selectedSubcategories: Set<String> = []
     var startDate: Date = .now
     var endDate: Date = .now
