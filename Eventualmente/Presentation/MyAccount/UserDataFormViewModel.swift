@@ -12,8 +12,17 @@ class UserDataFormViewModel {
         let changeRequest = currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = name
         changeRequest?.commitChanges { error in
-            guard let error else { return }
-            Logger.global.error("Error updating user name: \(error.localizedDescription)")
+            if let error {
+                Logger.global.error("Error updating user name: \(error.localizedDescription)")
+            } else {
+                let updatedUser = UserData(name: name)
+                do {
+                    guard let id = self.currentUser?.uid else { return }
+                    try Firestore.firestore().collection("users").document(id).setData(from: updatedUser, merge: true)
+                } catch {
+                    Logger.global.error("Error updating user data: \(error.localizedDescription)")
+                }
+            }
         }
     }
 
